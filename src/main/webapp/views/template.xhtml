@@ -18,10 +18,10 @@
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link rel="icon" type="image/png" sizes="32x32"
-		href="../Topicos2/resources/images/favicon-32x32.png" />
+		href="https://i.imgur.com/8GM488v.png" />
 
 	<link rel="icon" type="image/png" sizes="16x16"
-		href="../Topicos2/resources/images/favicon-16x16.png" />
+		href="https://i.imgur.com/opFuBQh.png" />
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
 		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
@@ -39,7 +39,11 @@
 	<link rel="stylesheet" href="../Topicos2/resources/css/template.css" />
 	<link rel="stylesheet" href="../Topicos2/resources/css/cadastro.css" />
 	<link rel="stylesheet" href="../Topicos2/resources/css/planos.css" />
-	
+	<!-- Seção CSS Admin -->
+	<link rel="stylesheet" href="../../Topicos2/resources/css/reset.css" />
+	<link rel="stylesheet" href="../../Topicos2/resources/css/template.css" />
+	<!--  -->
+
 
 </h:head>
 
@@ -82,7 +86,8 @@
 								<div
 									class="col-xl-3 col-md-7 col-9 d-flex justify-content-start align-items-center">
 									<a href="/Topicos2/views/cadastro.xhtml" title="HypeHost"
-										class="logo"> <img src="../Topicos2/resources/images/hypehost3.svg"
+										class="logo"> <img
+										src="https://gist.githubusercontent.com/gutinha/710ccc74d4bd017b395df501b97e6e9c/raw/a2c7d2fff5624c7b113e575a1ba666f9a0e6cc97/hypehost3.svg"
 										alt="HypeHost logo" />
 									</a>
 								</div>
@@ -91,7 +96,8 @@
 									<nav>
 										<a href='/Topicos2/views/cadastro.xhtml' title="HypeHost"
 											class="logo d-xl-none"> <img
-											src="../Topicos2/resources/images/hypehost2.svg" alt="HypeHost logo" />
+											src="../Topicos2/resources/images/hypehost2.svg"
+											alt="HypeHost logo" />
 										</a>
 										<ul>
 											<li><a href="/" title="Início"> Início </a></li>
@@ -121,9 +127,8 @@
 																				mapas
 																		</span>
 																	</a></li>
-																	<li><a href="#"
-																		title="Hospedagem VPS para Rust"> <i
-																			class="fas fa-rocket"></i> <span> <strong>VPS
+																	<li><a href="#" title="Hospedagem VPS para Rust">
+																			<i class="fas fa-rocket"></i> <span> <strong>VPS
 																					para Rust</strong><br /> Escolha hospedar no Brasil ou
 																				Canadá
 																		</span>
@@ -133,9 +138,7 @@
 															<div class="col-xl-4 col-12">
 																<h3>Serviços Corporativos</h3>
 																<ul>
-																	<li><a
-																		href="#"
-																		title="Registro de Domínio"> <i
+																	<li><a href="#" title="Registro de Domínio"> <i
 																			class="fas fa-globe"></i> <span> <strong>Registro
 																					de Domínio</strong><br /> Registre o domínio da sua marca
 																		</span>
@@ -154,12 +157,10 @@
 														title="Saiba mais sobre nossa empresa">A Empresa</a></li>
 													<li><a class="dropdown-item" href="#"
 														title="Conheça nossos datacenters">O Datacenter</a></li>
-													<li><a class="dropdown-item"
-														href="#"
+													<li><a class="dropdown-item" href="#"
 														title="Leia mais sobre nossa proteção DDoS">Proteção
 															DDoS</a></li>
-													<li><a class="dropdown-item"
-														href="#"
+													<li><a class="dropdown-item" href="#"
 														title="Veja os prazos e formas de pagamentos">Formas
 															de Pagamento</a></li>
 													<li><a class="dropdown-item" href="#"
@@ -169,8 +170,8 @@
 											<li><a href="#"
 												title="Veja algumas promoções que separamos"> Promoções
 											</a></li>
-											<li><a href="#"
-												title="Área do cliente" class="btn"> Área do Cliente </a></li>
+											<li><a href="#" title="Área do cliente" class="btn">
+													Área do Cliente </a></li>
 										</ul>
 										<button class="menu-btn d-xl-none">
 											<i class="fas fa-times"></i>
@@ -201,11 +202,10 @@
 							<div class="col-lg-3 col-sm-4 col-12 d-none d-sm-block">
 								<h3>Serviços</h3>
 								<ul>
-									<li><a href="#"
-										title="Cloud VPS Premium NVMe"> Cloud VPS para jogos </a></li>
-									<li><a
-										href="#"
-										title="Registro de Domínio"> Registro de Domínio </a></li>
+									<li><a href="#" title="Cloud VPS Premium NVMe"> Cloud
+											VPS para jogos </a></li>
+									<li><a href="#" title="Registro de Domínio"> Registro
+											de Domínio </a></li>
 								</ul>
 							</div>
 							<div class="col-lg-3 col-sm-4 col-12 d-none d-sm-block">
@@ -274,8 +274,17 @@
 						<div class="container">
 							<div class="row">
 								<center>
-									<div class="col-12 col-md-6">© 2021 - Todos os direitos
-										reservados.</div>
+									<div class="col-12 col-md-6">
+										© <span id="copyright"> <script>
+											document
+													.getElementById('copyright')
+													.appendChild(
+															document
+																	.createTextNode(new Date()
+																			.getFullYear()))
+										</script>
+										</span> - Todos os direitos reservados.
+									</div>
 								</center>
 							</div>
 						</div>

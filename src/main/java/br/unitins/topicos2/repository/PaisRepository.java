@@ -11,7 +11,7 @@ public class PaisRepository extends Repository<Pais>{
 	@SuppressWarnings("unchecked")
 	public List<Pais> findByNome(String nome) throws RepositoryException {
 		try { 
-			String sql = "SELECT p FROM Pais p WHERE lower(p.pais_nome) LIKE lower(:paisNome) or lower(p.pais_name) LIKE lower(:paisNome)";
+			String sql = "SELECT p FROM Pais p WHERE lower(p.nome_pt) LIKE lower(:paisNome) or lower(p.nome) LIKE lower(:paisNome)";
 			Query query = getEntityManager().createQuery(sql);
 			query.setParameter("paisNome", "%" + nome + "%");
 			return query.getResultList();

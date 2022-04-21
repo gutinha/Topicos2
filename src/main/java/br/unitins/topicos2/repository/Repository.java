@@ -1,8 +1,11 @@
 package br.unitins.topicos2.repository;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import br.unitins.topicos2.model.DefaultEntity;
 import br.unitins.topicos2.utils.JPAUtil;
 import br.unitins.topicos2.utils.RepositoryException;
@@ -87,6 +90,24 @@ public class Repository<T extends DefaultEntity> {
 			throw new RepositoryException("Erro ao buscar os dados");
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<T> findAll() throws RepositoryException {
+        try {
+            // obtendo o tipo da classe de forma generica (a classe deve ser publica)
+            final ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
+            Class<T> tClass = (Class<T>) (type).getActualTypeArguments()[0];
+            
+            Query query = getEntityManager().createQuery("Select o FROM "+ tClass.getSimpleName() +" o");
+			List <T> lista = query.getResultList();
+            
+            return lista;
+        } catch (Exception e) {
+            System.out.println("Erro ao executar o método de findAll.");
+            e.printStackTrace();
+            throw new RepositoryException("Erro ao buscar os dados");
+        }
+    }
 
 	protected EntityManager getEntityManager() {
 		return entityManager;

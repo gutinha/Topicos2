@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Cadastro de Estado</title>
+	<meta charset="utf-8"></meta>
+</h:head>
+<h:body>
+	<ui:composition template="/views/template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<div class="login-container">
+					<p:growl id="growl" showDetail="true" />
+					<p:messages id="messages" showDetail="true">
+						<p:autoUpdate />
+					</p:messages>
+					<center>
+						<p:panel header="Cadastro de Estado"
+							style="margin-top:130px;width:560px;">
+							<div class="p-grid ui-fluid">
+								<h:panelGrid>
+								<p:commandButton icon="pi pi-search"
+										styleClass="ui-button-warning"
+										actionListener="#{cadastroEstadoController.abrirEstadoListing}">
+										<p:ajax event="dialogReturn"
+											listener="#{cadastroEstadoController.obterEstadoListing}"
+											update="@form" />
+									</p:commandButton>
+									<p:outputLabel value="Nome do estado: " />
+									<h:panelGroup>
+										<div class="ui-inputgroup">
+											<p:inputText value="#{cadastroEstadoController.entity.nome}" />
+										</div>
+									</h:panelGroup>
+									<p:outputLabel value="Sigla do estado: " />
+									<p:inputText value="#{cadastroEstadoController.entity.sigla}" />
+									<h:panelGroup>
+										<div class="p-field p-col-12 p-md-4">
+											<p:outputLabel for="@next" value="País:" />
+											<p:selectOneMenu id="advanced"
+												value="#{cadastroEstadoController.entity.pais}"
+												converter="paisConverter" panelStyle="width:180px"
+												effect="fade" var="c" filter="true"
+												filterMatchMode="startsWith">
+
+												<f:selectItems value="#{cadastroEstadoController.listPais}"
+													var="pais" itemLabel="#{pais.nome_pt}"
+													itemValue="#{pais}" />
+												<p:column style="width:10%">
+													<span style="width: 30px; height: 20px" >
+														<img src="../../Topicos2/resources/flags/4x3/#{c.sigla.toLowerCase()}.svg"></img>
+														</span>
+												</p:column>
+												<p:column>
+
+													<f:facet name="header">
+														<h:outputText value="Nome" />
+													</f:facet>
+													<h:outputText value="#{c.nome_pt}" />
+												</p:column>
+
+												<f:facet name="footer">
+													<h:outputText
+														value="#{cadastroEstadoController.listPais.size()} Países"
+														style="font-weight:bold;" styleClass="p-py-1 p-d-block" />
+												</f:facet>
+											</p:selectOneMenu>
+										</div>
+									</h:panelGroup>
+								</h:panelGrid>
+							</div>
+							<f:facet name="footer">
+								<center>
+									<p:commandButton value="Incluir"
+										style="margin-left:10px;margin-right:10px;"
+										actionListener="#{cadastroEstadoController.incluir}"
+										update="@form" process="@form"
+										disabled="#{cadastroEstadoController.entity.id != null}" />
+									<p:commandButton value="Alterar"
+										style="margin-left:10px;margin-right:10px;"
+										actionListener="#{cadastroEstadoController.alterar}"
+										update="@form" process="@form"
+										disabled="#{cadastroEstadoController.entity.id == null}" />
+									<p:commandButton value="Excluir" styleClass="ui-button-danger"
+										icon="pi pi-times" style="margin-left:10px;margin-right:10px;"
+										actionListener="#{cadastroEstadoController.excluir}"
+										process="@this" update="@form"
+										disabled="#{cadastroEstadoController.entity.id == null}">
+										<p:confirm header="Confirmação"
+											message="Deseja realmente excluir?" icon="pi pi-info-circle" />
+									</p:commandButton>
+									<p:commandButton value="Limpar"
+										style="margin-left:10px;margin-right:10px;"
+										actionListener="#{cadastroEstadoController.limpar}"
+										update="@form" process="@this" />
+								</center>
+							</f:facet>
+						</p:panel>
+					</center>
+				</div>
+				<div></div>
+			</h:form>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+				responsive="true" width="350">
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no ui-button-flat" />
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" />
+			</p:confirmDialog>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

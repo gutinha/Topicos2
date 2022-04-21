@@ -10,8 +10,14 @@
 	</url-mapping>
 
 	<url-mapping id="cadastroPais">
-		<pattern value="/cadastroPais" />
-		<view-id value="/views/cadastroPais.xhtml" />
+		<pattern value="/admin/cadastroPais" />
+		<view-id value="/views/admin/cadastroPais.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="cadastroEstado">
+		<pattern value="/admin/cadastroEstado" />
+		<view-id value="/views/admin/cadastroEstado.xhtml" />
+	</url-mapping>
+
 
 </pretty-config>

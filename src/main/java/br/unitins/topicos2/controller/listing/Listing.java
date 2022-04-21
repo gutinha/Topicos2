@@ -28,7 +28,7 @@ public abstract class Listing<T extends DefaultEntity> implements Serializable {
 		options.put("draggable", false);
 		options.put("resizable", true);
 		options.put("width", "80%");
-		options.put("height", "60%");
+		options.put("height", "70%");
 		options.put("contentWidth", "100%");
 		options.put("contentHeight", "100%");
 

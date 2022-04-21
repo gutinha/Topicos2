@@ -16,6 +16,8 @@ public class Usuario extends DefaultEntity implements Serializable {
 	private String senha;
 	@Column(length = 30)
 	private String telefone;
+	@Column(length = 30)
+	private String perfil;
 
 	public String getEmail() {
 		return email;
@@ -47,6 +49,14 @@ public class Usuario extends DefaultEntity implements Serializable {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
 	}
 
 }
