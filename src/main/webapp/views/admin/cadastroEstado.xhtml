@@ -38,15 +38,12 @@
 									</h:panelGroup>
 									<p:outputLabel value="Sigla do estado: " />
 									<p:inputText value="#{cadastroEstadoController.entity.sigla}" />
-									<h:panelGroup>
-										<div class="p-field p-col-12 p-md-4">
 											<p:outputLabel for="@next" value="País:" />
 											<p:selectOneMenu id="advanced"
 												value="#{cadastroEstadoController.entity.pais}"
 												converter="paisConverter" panelStyle="width:180px"
 												effect="fade" var="c" filter="true"
 												filterMatchMode="startsWith">
-
 												<f:selectItems value="#{cadastroEstadoController.listPais}"
 													var="pais" itemLabel="#{pais.nome_pt}"
 													itemValue="#{pais}" />
@@ -56,21 +53,17 @@
 														</span>
 												</p:column>
 												<p:column>
-
 													<f:facet name="header">
 														<h:outputText value="Nome" />
 													</f:facet>
 													<h:outputText value="#{c.nome_pt}" />
 												</p:column>
-
 												<f:facet name="footer">
 													<h:outputText
 														value="#{cadastroEstadoController.listPais.size()} Países"
 														style="font-weight:bold;" styleClass="p-py-1 p-d-block" />
 												</f:facet>
 											</p:selectOneMenu>
-										</div>
-									</h:panelGroup>
 								</h:panelGrid>
 							</div>
 							<f:facet name="footer">

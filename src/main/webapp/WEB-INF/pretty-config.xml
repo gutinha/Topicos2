@@ -18,6 +18,11 @@
 		<pattern value="/admin/cadastroEstado" />
 		<view-id value="/views/admin/cadastroEstado.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="cadastroCidade">
+		<pattern value="/admin/cadastroCidade" />
+		<view-id value="/views/admin/cadastroCidade.xhtml" />
+	</url-mapping>
 
 
 </pretty-config>

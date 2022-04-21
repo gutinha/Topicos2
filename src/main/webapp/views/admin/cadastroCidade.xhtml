@@ -6,7 +6,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Cadastro de País</title>
+	<title>Cadastro de Cidade</title>
 	<meta charset="utf-8"></meta>
 </h:head>
 <h:body>
@@ -19,56 +19,70 @@
 						<p:autoUpdate />
 					</p:messages>
 					<center>
-						<p:panel header="Cadastro de País"
+						<p:panel header="Cadastro de Cidade"
 							style="margin-top:150px;width:550px;">
 							<div class="p-grid ui-fluid">
 								<h:panelGrid columns="2">
 									<p:commandButton icon="pi pi-search"
 										styleClass="ui-button-warning"
-										actionListener="#{cadastroPaisController.abrirPaisListing}">
+										actionListener="#{cadastroCidadeController.abrirCidadeListing}">
 										<p:ajax event="dialogReturn"
-											listener="#{cadastroPaisController.obterPaisListing}"
+											listener="#{cadastroCidadeController.obterCidadeListing}"
 											update="@form" />
 									</p:commandButton>
 									<br />
 									<p:outputLabel value="Nome da cidade: " />
 									<h:panelGroup>
 										<div class="ui-inputgroup">
-											<p:inputText value="#{cadastroPaisController.entity.nome}" />
+											<p:inputText value="#{cadastroCidadeController.entity.nome}" />
 										</div>
 									</h:panelGroup>
-									<div class="p-field p-col-12 p-md-4">
-										<p:outputLabel value="Digite o Pais" for="@next" />
-										<p:autoComplete id="acMinLength" minQueryLength="3"
-											value="#{autoCompleteView.txt2}"
-											completeMethod="#{autoCompleteView.completeText}"
-											effect="fade" scrollHeight="250" />
-									</div>
+									<p:outputLabel for="@next" value="Estado:" />
+											<p:selectOneMenu id="advanced"
+												value="#{cadastroCidadeController.entity.estado}"
+												converter="estadoConverter" panelStyle="width:180px"
+												effect="fade" var="c" filter="true"
+												filterMatchMode="startsWith">
+												<f:selectItems value="#{cadastroCidadeController.listEstado}"
+													var="estado" itemLabel="#{estado.nome}"
+													itemValue="#{estado}" />
+												<p:column>
+													<f:facet name="header">
+														<h:outputText value="Nome" />
+													</f:facet>
+													<h:outputText value="#{c.nome}" />
+												</p:column>
+												<f:facet name="footer">
+													<h:outputText
+														value="#{cadastroCidadeController.listEstado.size()} Estados"
+														style="font-weight:bold;" styleClass="p-py-1 p-d-block" />
+												</f:facet>
+											</p:selectOneMenu>
 								</h:panelGrid>
 							</div>
 							<f:facet name="footer">
 								<center>
 									<p:commandButton value="Incluir"
 										style="margin-left:10px;margin-right:10px;"
-										actionListener="#{cadastroPaisController.incluir}"
+										actionListener="#{cadastroCidadeController.incluir}"
 										update="@form" process="@form"
-										disabled="#{cadastroPaisController.entity.id != null}" />
+										disabled="#{cadastroCidadeController.entity.id != null}" />
 									<p:commandButton value="Alterar"
 										style="margin-left:10px;margin-right:10px;"
-										actionListener="#{cadastroPaisController.alterar}"
+										actionListener="#{cadastroCidadeController.alterar}"
 										update="@form" process="@form"
-										disabled="#{cadastroPaisController.entity.id == null}" />
+										disabled="#{cadastroCidadeController.entity.id == null}" />
 									<p:commandButton value="Excluir" styleClass="ui-button-danger"
 										icon="pi pi-times" style="margin-left:10px;margin-right:10px;"
-										actionListener="#{cadastroPaisController.excluir}"
+										actionListener="#{cadastroCidadeController.excluir}"
 										process="@this" update="@form"
-										disabled="#{cadastroPaisController.entity.id == null}">
+										disabled="#{cadastroCidadeController.entity.id == null}">
 										<p:confirm header="Confirmação"
 											message="Deseja realmente excluir?" icon="pi pi-info-circle" />
 									</p:commandButton>
 									<p:commandButton value="Limpar"
 										style="margin-left:10px;margin-right:10px;"
-										actionListener="#{cadastroPaisController.limpar}"
+										actionListener="#{cadastroCidadeController.limpar}"
 										update="@form" process="@this" />
 								</center>
 							</f:facet>

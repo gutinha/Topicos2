@@ -9,7 +9,7 @@ public class CidadeRepository extends Repository<Cidade>{
 	@SuppressWarnings("unchecked")
 	public List<Cidade> findByNome(String nome) throws RepositoryException {
 		try { 
-			String sql = "SELECT c FROM Cidade c WHERE lower(nome) LIKE lower(:nome) or lower(estado_id) LIKE lower(:nome)";
+			String sql = "SELECT DISTINCT c FROM Cidade c, Estado e WHERE lower(c.nome) LIKE lower(:nome) or lower(e.nome) LIKE lower(:nome)";
 			Query query = getEntityManager().createQuery(sql);
 			query.setParameter("nome", "%" + nome + "%");
 			return query.getResultList();
