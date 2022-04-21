@@ -12,13 +12,10 @@ public class Endereco extends DefaultEntity implements Serializable{
 	
 	@Column(length = 255)
 	private String endereco;
+	@Column(length = 35)
 	private String cep;
 	@ManyToOne
 	private Cidade cidade;
-	@ManyToOne
-	private Estado estado;
-	@ManyToOne
-	private Pais pais;
 	
 	public String getCep() {
 		return cep;
@@ -37,18 +34,6 @@ public class Endereco extends DefaultEntity implements Serializable{
 	}
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
-	}
-	public Estado getEstado() {
-		return estado;
-	}
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-	public Pais getPais() {
-		return pais;
-	}
-	public void setPais(Pais pais) {
-		this.pais = pais;
 	}
 	
 	

@@ -8,5 +8,15 @@
 		<pattern value="/cadastro" />
 		<view-id value="/views/cadastro.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="usuariolisting">
+		<pattern value="/usuariolisting" />
+		<view-id value="/usuariolisting.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="cadastroPais">
+		<pattern value="/admin/cadastroPais" />
+		<view-id value="/views/admin/localizacaoManager/cadastroPais.xhtml" />
+	</url-mapping>
 
 </pretty-config>

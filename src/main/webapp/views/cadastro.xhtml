@@ -19,28 +19,61 @@
 						<p:autoUpdate />
 					</p:messages>
 					<center>
-						<p:panel header="Cadastro" style="margin-top:150px;width:500px;">
+						<p:panel header="Cadastro" style="margin-top:150px;width:550px;">
+							<h:panelGroup>
+								<div class="p-col-12 p-md-4">
+									<p:selectOneRadio id="tipo-pessoa" required="true"
+										value="#{cadastroController.pessoaJuridica}"
+										unselectable="true" style="margin-top: 0.7em;">
+										<f:selectItem itemLabel="Pessoa Física" itemValue="false" />
+										<f:selectItem itemLabel="Pessoa Jurídica" itemValue="true" />
+										<p:ajax listener="#{cadastroController.limpar}"
+											process="@this" update="@form" />
+									</p:selectOneRadio>
+								</div>
+							</h:panelGroup>
 							<div class="p-grid ui-fluid">
 								<h:panelGrid columns="2">
-									<p:outputLabel value="Nome: " />
-									<h:panelGroup>
-										<div class="p-col-12 p-md-4">
+									<p:outputLabel value="Nome: "
+										rendered="#{cadastroController.pessoaJuridica == false}" />
+									<h:panelGroup
+										rendered="#{cadastroController.pessoaJuridica == false}">
+										<div class="p-col-12 p-md-4"
+											rendered="#{cadastroController.pessoaJuridica == false}">
 											<div class="ui-inputgroup">
-												<p:inputText value="#{cadastroController.entity.nome}" />
+												<p:inputText value="#{cadastroController.entity.nome}"
+													rendered="#{cadastroController.pessoaJuridica == false}" />
 												<p:commandButton icon="pi pi-search"
-													styleClass="ui-button-warning" onclick="PF('dlg').show()" />
+													styleClass="ui-button-warning"
+													actionListener="#{cadastroController.abrirUsuarioListing}"
+													rendered="#{cadastroController.pessoaJuridica == false}" >
+													<p:ajax event="dialogReturn"
+														listener="#{cadastroController.obterUsuarioListing}"
+														update="@form" />
+												</p:commandButton>
 											</div>
 										</div>
 									</h:panelGroup>
-									<p:outputLabel value="Sobrenome: " />
-									<p:inputText value="#{cadastroController.entity.sobrenome}" />
-									<p:outputLabel value="CPF: " />
-									<p:inputText value="#{cadastroController.entity.cpf}" />
+									<p:outputLabel value="Sobrenome: "
+										rendered="#{cadastroController.pessoaJuridica == false}" />
+									<p:inputText value="#{cadastroController.entity.sobrenome}"
+										rendered="#{cadastroController.pessoaJuridica == false}" />
+									<p:outputLabel value="Nome Fantasia:"
+										rendered="#{cadastroController.pessoaJuridica == true}" />
+									<p:inputText value="#{cadastroController.entity.nomeFantasia}"
+										rendered="#{cadastroController.pessoaJuridica == true}" />
+									<p:outputLabel value="CNPJ: "
+										rendered="#{cadastroController.pessoaJuridica == true}" />
+									<p:inputText value="#{cadastroController.entity.cnpj}"
+										rendered="#{cadastroController.pessoaJuridica == true}" />
+									<p:outputLabel value="CPF: "
+										rendered="#{cadastroController.pessoaJuridica == false}" />
+									<p:inputText value="#{cadastroController.entity.cpf}"
+										rendered="#{cadastroController.pessoaJuridica == false}" />
 									<p:outputLabel value="Email: " />
 									<p:inputText value="#{cadastroController.entity.email}" />
 									<p:outputLabel value="Telefone: " />
-									<p:inputText
-										value="#{cadastroController.entity.telefone}" />
+									<p:inputText value="#{cadastroController.entity.telefone}" />
 									<p:outputLabel value="Senha: " />
 									<p:password id="toggle"
 										value="#{cadastroController.entity.senha}" toggleMask="true"
@@ -76,48 +109,7 @@
 						</p:panel>
 					</center>
 				</div>
-				<div>
-					<center>
-						<p:dialog header="Pesquisa de Usuário" widgetVar="dlg"
-							minHeight="100" width="80%" showEffect="fade" modal="true"
-							closeOnEscape="true">
-							<p:panel>
-								<div class="p-grid ui-fluid">
-									<div class="p-col-12 p-md-4">
-										<div class="ui-inputgroup">
-											<p:inputText id="itNomePesquisa"
-												value="#{cadastroController.nomePesquisa}"
-												placeholder="Informe um nome ..." />
-											<p:commandButton value="Pesquisar"
-												actionListener="#{cadastroController.pesquisar}"
-												process="@this itNomePesquisa" update="dataTable" />
-										</div>
-									</div>
-								</div>
-								<p:dataTable id="dataTable"
-									value="#{cadastroController.listaUsuario}" var="obj">
-									<p:column headerText="Nome">
-										<p:outputLabel value="#{obj.nome}" />
-									</p:column>
-									<p:column headerText="CPF">
-										<p:outputLabel value="#{obj.cpf}" />
-									</p:column>
-									<p:column headerText="Email">
-										<p:outputLabel value="#{obj.email}" />
-									</p:column>
-									<p:column headerText="Senha">
-										<p:outputLabel value="#########" />
-									</p:column>
-									<p:column headerText="Ação">
-										<p:commandButton value="Editar"
-											actionListener="#{cadastroController.editar(obj)}"
-											process="@this" update="@form" />
-									</p:column>
-								</p:dataTable>
-							</p:panel>
-						</p:dialog>
-					</center>
-				</div>
+				<div></div>
 			</h:form>
 
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"

@@ -8,15 +8,15 @@ import br.unitins.topicos2.utils.RepositoryException;
 public class UsuarioRepository extends Repository<Usuario> {
 	
 	@SuppressWarnings("unchecked")
-	public List<Usuario> findByNome(String nome) throws RepositoryException {
+	public List<Usuario> findByEmail(String email) throws RepositoryException {
 		try { 
-			String sql = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome";
+			String sql = "SELECT u FROM Usuario u WHERE u.email LIKE :email";
 			Query query = getEntityManager().createQuery(sql);
-			query.setParameter("nome", "%" + nome + "%");
+			query.setParameter("email", "%" + email + "%");
 			return query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RepositoryException("Erro ao executar o findByNome.");
+			throw new RepositoryException("Erro ao executar o findByEmail.");
 		}
 	}
 	

@@ -1,61 +1,21 @@
 package br.unitins.topicos2.model;
-
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario extends DefaultEntity implements Serializable {
 	private static final long serialVersionUID = 512261310652722752L;
 
-	@Column(length = 30)
-	private String nome;
-	@Column(length = 30)
-	private String sobrenome;
-	@Column(length = 30)
-	private String cpf;
 	@Column(length = 150)
 	private String email;
-	@ManyToOne
+	@OneToOne
 	private Endereco endereco;
 	@Column(length = 30)
 	private String senha;
-	@ManyToOne
-	private Telefone telefone;
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-
-	public Telefone getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(Telefone telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	@Column(length = 30)
+	private String telefone;
 
 	public String getEmail() {
 		return email;
@@ -79,6 +39,14 @@ public class Usuario extends DefaultEntity implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 }

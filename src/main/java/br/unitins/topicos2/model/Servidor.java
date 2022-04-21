@@ -11,7 +11,8 @@ public class Servidor extends DefaultEntity implements Serializable{
 	private String totalRam;
 	private String processador;
 	private String armazenamento;
-	private Integer virtualizacoes;
+	private Integer quantVirtualizacoes;
+	private String ipDedicado;
 	
 	public String getNomeServidor() {
 		return nomeServidor;
@@ -37,11 +38,17 @@ public class Servidor extends DefaultEntity implements Serializable{
 	public void setArmazenamento(String armazenamento) {
 		this.armazenamento = armazenamento;
 	}
-	public Integer getVirtualizacoes() {
-		return virtualizacoes;
+	public Integer getQuantVirtualizacoes() {
+		return quantVirtualizacoes;
 	}
-	public void setVirtualizacoes(Integer virtualizacoes) {
-		this.virtualizacoes = virtualizacoes;
+	public void setQuantVirtualizacoes(Integer quantVirtualizacoes) {
+		this.quantVirtualizacoes = quantVirtualizacoes;
+	}
+	public String getIpDedicado() {
+		return ipDedicado;
+	}
+	public void setIpDedicado(String ipDedicado) {
+		this.ipDedicado = ipDedicado;
 	}
 	
 }

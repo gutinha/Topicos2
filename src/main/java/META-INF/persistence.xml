@@ -12,8 +12,10 @@
 		<class>br.unitins.topicos2.model.MeioPagamento</class>
 		<class>br.unitins.topicos2.model.Pagamento</class>
 		<class>br.unitins.topicos2.model.Pais</class>
+		<class>br.unitins.topicos2.model.PessoaFisica</class>
+		<class>br.unitins.topicos2.model.PessoaJuridica</class>
 		<class>br.unitins.topicos2.model.Servidor</class>
-		<class>br.unitins.topicos2.model.Telefone</class>
+		<class>br.unitins.topicos2.model.ServidorVM</class>
 		<class>br.unitins.topicos2.model.Usuario</class>
 
 		<properties>
@@ -37,8 +39,8 @@
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.PostgreSQLDialect" />
 
-				<!-- create / create-drop / update -->
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+				<!-- create / create-drop / update / none -->
+			<property name="hibernate.hbm2ddl.auto" value="none" />
 
 				<!-- Show SQL in console -->
 			<property name="hibernate.show_sql" value="true" />
