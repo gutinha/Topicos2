@@ -12,7 +12,6 @@ public class Pais extends DefaultEntity implements Serializable{
 	private String pais_nome;
 	@Column(length = 50)
 	private String pais_name;
-	
 	public String getPais_nome() {
 		return pais_nome;
 	}
@@ -25,10 +24,6 @@ public class Pais extends DefaultEntity implements Serializable{
 	public void setPais_name(String pais_name) {
 		this.pais_name = pais_name;
 	}
-	public String getNome() {
-		return pais_nome;
-	}
-	public void setNome(String nome) {
-		this.pais_nome = nome;
-	}
+	
+	
 }

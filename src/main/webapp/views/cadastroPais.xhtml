@@ -10,7 +10,7 @@
 	<meta charset="utf-8"></meta>
 </h:head>
 <h:body>
-	<ui:composition template="/views/template.xhtml">
+	<ui:composition template="./template.xhtml">
 		<ui:define name="conteudo">
 			<h:form>
 				<div class="login-container">
@@ -19,10 +19,13 @@
 						<p:autoUpdate />
 					</p:messages>
 					<center>
-						<p:panel header="Cadastro de Cidade" style="margin-top:150px;width:550px;">
+						<p:panel header="Cadastro de País" style="margin-top:150px;width:550px;">
 							<div class="p-grid ui-fluid">
 								<h:panelGrid columns="2">
 									<p:outputLabel value="Nome do País(Em português): "/>
+									<h:panelGroup>
+									<div class="ui-inputgroup">
+									<p:inputText value="#{cadastroPaisController.entity.pais_nome}" />
 									<p:commandButton icon="pi pi-search"
 													styleClass="ui-button-warning"
 													actionListener="#{cadastroPaisController.abrirPaisListing}">
@@ -30,7 +33,8 @@
 														listener="#{cadastroPaisController.obterPaisListing}"
 														update="@form" />
 												</p:commandButton>
-									<p:inputText value="#{cadastroPaisController.entity.pais_nome}" />
+									</div>			
+									</h:panelGroup>
 									<p:outputLabel value="Nome do País(Em inglês): "/>
 									<p:inputText value="#{cadastroPaisController.entity.pais_name}" />
 								</h:panelGrid>

@@ -25,7 +25,7 @@ public abstract class Listing<T extends DefaultEntity> implements Serializable {
 	public void open() {
 		Map<String, Object> options = new HashMap<String, Object>();
 		options.put("modal", true);
-		options.put("draggable", true);
+		options.put("draggable", false);
 		options.put("resizable", true);
 		options.put("width", "80%");
 		options.put("height", "60%");
@@ -33,7 +33,6 @@ public abstract class Listing<T extends DefaultEntity> implements Serializable {
 		options.put("contentHeight", "100%");
 
 		PrimeFaces.current().dialog().openDynamic(page, options, null);
-		System.out.println(page);
 	}
 
 	public void select(int id) {
