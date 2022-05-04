@@ -2,15 +2,20 @@ package br.unitins.topicos2.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends DefaultEntity implements Serializable {
 	private static final long serialVersionUID = 512261310652722752L;
 
 	@Column(length = 150)
 	private String email;
 	@OneToOne
+	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
 	@Column(length = 30)
 	private String senha;

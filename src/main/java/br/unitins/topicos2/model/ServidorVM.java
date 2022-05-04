@@ -3,6 +3,7 @@ package br.unitins.topicos2.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -17,6 +18,7 @@ public class ServidorVM extends DefaultEntity implements Serializable{
 	private String senha;
 	private String ipServidor;
 	@ManyToOne
+	@JoinColumn(name = "id_servidor")
 	private Servidor servidor;
 	public String getProcessador() {
 		return processador;

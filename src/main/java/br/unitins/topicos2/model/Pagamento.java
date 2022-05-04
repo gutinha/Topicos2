@@ -3,11 +3,13 @@ package br.unitins.topicos2.model;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Pagamento extends DefaultEntity{
 	@OneToOne
+	@JoinColumn(name = "id_meioPagamento")
 	private MeioPagamento meioPagamento;
 	private LocalDate dataPagamento;
 	public MeioPagamento getMeioPagamento() {

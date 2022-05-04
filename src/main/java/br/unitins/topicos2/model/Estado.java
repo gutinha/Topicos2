@@ -3,6 +3,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -13,6 +14,7 @@ public class Estado extends DefaultEntity implements Serializable{
 	@Column(length = 5)
 	private String sigla;
 	@ManyToOne
+	@JoinColumn(name = "id_pais")
 	private Pais pais;
 
 	public String getNome() {

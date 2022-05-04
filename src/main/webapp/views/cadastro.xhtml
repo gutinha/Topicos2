@@ -9,6 +9,34 @@
 	<title>Cadastro Usuário</title>
 	<meta charset="utf-8"></meta>
 </h:head>
+<style type="text/css">
+.label {
+	width: 20%;
+	padding: 4px;
+}
+
+.value {
+	width: 80%;
+	padding: 4px;
+}
+
+.grid {
+	width: 100%;
+}
+
+.error {
+	color: red;
+}
+
+.outputLabel {
+	font-weight: bold;
+}
+
+.grid {
+	width: 33%;
+	padding: 4px;
+}
+</style>
 <h:body>
 	<ui:composition template="./template.xhtml">
 		<ui:define name="conteudo">
@@ -19,94 +47,67 @@
 						<p:autoUpdate />
 					</p:messages>
 					<center>
-						<p:panel header="Cadastro" style="margin-top:150px;width:550px;">
-							<h:panelGroup>
-								<div class="p-col-12 p-md-4">
-									<p:selectOneRadio id="tipo-pessoa" required="true"
-										value="#{cadastroController.pessoaJuridica}"
-										unselectable="true" style="margin-top: 0.7em;">
-										<f:selectItem itemLabel="Pessoa Física" itemValue="false" />
-										<f:selectItem itemLabel="Pessoa Jurídica" itemValue="true" />
-										<p:ajax listener="#{cadastroController.limpar}"
-											process="@this" update="@form" />
-									</p:selectOneRadio>
-								</div>
-							</h:panelGroup>
-							<div class="p-grid ui-fluid">
-								<h:panelGrid columns="2">
-									<p:outputLabel value="Nome: "
-										rendered="#{cadastroController.pessoaJuridica == false}" />
-									<h:panelGroup
-										rendered="#{cadastroController.pessoaJuridica == false}">
-										<div class="p-col-12 p-md-4"
-											rendered="#{cadastroController.pessoaJuridica == false}">
-											<div class="ui-inputgroup">
-												<p:inputText value="#{cadastroController.entity.nome}"
-													rendered="#{cadastroController.pessoaJuridica == false}" />
-												<p:commandButton icon="pi pi-search"
-													styleClass="ui-button-warning"
-													actionListener="#{cadastroController.abrirUsuarioListing}"
-													rendered="#{cadastroController.pessoaJuridica == false}" >
-													<p:ajax event="dialogReturn"
-														listener="#{cadastroController.obterUsuarioListing}"
-														update="@form" />
-												</p:commandButton>
+						<p:wizard flowListener="#{cadastroController.onFlowProcess}"
+							style="margin-top:110px;width:550px;margin-bottom:20px;">
+							<p:tab id="personal" title="Dados">
+								<p:panel header="Dados básicos">
+									<p:messages />
+									<div class="p-grid ui-fluid">
+										<h:panelGrid columns="2">
+											<p:outputLabel value="Nome: " />
+											<h:panelGroup>
+												<p:inputText value="#{cadastroController.entity.nome}" />
+											</h:panelGroup>
+											<p:outputLabel value="Sobrenome: " />
+											<p:inputText value="#{cadastroController.entity.sobrenome}" />
+											<p:outputLabel value="CPF: " />
+											<p:inputText value="#{cadastroController.entity.cpf}" />
+											<p:outputLabel value="Email: " />
+											<p:inputText value="#{cadastroController.entity.email}" />
+											<p:outputLabel value="Telefone: " />
+											<p:inputText value="#{cadastroController.entity.telefone}" />
+											<p:outputLabel value="Senha: " />
+											<p:password id="toggle"
+												value="#{cadastroController.entity.senha}" toggleMask="true"
+												redisplay="true" />
+										</h:panelGrid>
+									</div>
+								</p:panel>
+							</p:tab>
+
+							<p:tab id="address" title="Endereço">
+								<p:panel header="Detalhes do endereço">
+									<p:messages />
+									<h:panelGrid columns="2">
+										<h:outputText value="Endereço: " />
+										<p:inputText
+											value="#{cadastroController.entity.endereco.endereco}" />
+
+										<h:outputText value="CEP: " />
+										<p:inputText value="#{cadastroController.entity.endereco.cep}" />
+										<p:outputLabel value="Cidade " />
+										<h:panelGroup>
+											<div class="p-col-12 p-md-4">
+												<div class="ui-inputgroup">
+													<p:inputText
+														value="#{cadastroController.entity.endereco.cidade.nome}" />
+													<p:commandButton icon="pi pi-search"
+														styleClass="ui-button-warning"
+														actionListener="#{cadastroController.abrirCidadeListing}">
+														<p:ajax event="dialogReturn"
+															listener="#{cadastroController.obterCidadeListing}"
+															update="@form" />
+													</p:commandButton>
+												</div>
 											</div>
-										</div>
-									</h:panelGroup>
-									<p:outputLabel value="Sobrenome: "
-										rendered="#{cadastroController.pessoaJuridica == false}" />
-									<p:inputText value="#{cadastroController.entity.sobrenome}"
-										rendered="#{cadastroController.pessoaJuridica == false}" />
-									<p:outputLabel value="Nome Fantasia:"
-										rendered="#{cadastroController.pessoaJuridica == true}" />
-									<p:inputText value="#{cadastroController.entity.nomeFantasia}"
-										rendered="#{cadastroController.pessoaJuridica == true}" />
-									<p:outputLabel value="CNPJ: "
-										rendered="#{cadastroController.pessoaJuridica == true}" />
-									<p:inputText value="#{cadastroController.entity.cnpj}"
-										rendered="#{cadastroController.pessoaJuridica == true}" />
-									<p:outputLabel value="CPF: "
-										rendered="#{cadastroController.pessoaJuridica == false}" />
-									<p:inputText value="#{cadastroController.entity.cpf}"
-										rendered="#{cadastroController.pessoaJuridica == false}" />
-									<p:outputLabel value="Email: " />
-									<p:inputText value="#{cadastroController.entity.email}" />
-									<p:outputLabel value="Telefone: " />
-									<p:inputText value="#{cadastroController.entity.telefone}" />
-									<p:outputLabel value="Senha: " />
-									<p:password id="toggle"
-										value="#{cadastroController.entity.senha}" toggleMask="true"
-										redisplay="true" />
-								</h:panelGrid>
-							</div>
-							<f:facet name="footer">
-								<center>
+										</h:panelGroup>
+									</h:panelGrid>
 									<p:commandButton value="Incluir"
-										style="margin-left:10px;margin-right:10px;"
-										actionListener="#{cadastroController.incluir}" update="@form"
-										process="@form"
-										disabled="#{usuarioController.entity.id != null}" />
-									<p:commandButton value="Alterar"
-										style="margin-left:10px;margin-right:10px;"
-										actionListener="#{cadastroController.alterar}" update="@form"
-										process="@form"
-										disabled="#{cadastroController.entity.id == null}" />
-									<p:commandButton value="Excluir" styleClass="ui-button-danger"
-										icon="pi pi-times" style="margin-left:10px;margin-right:10px;"
-										actionListener="#{cadastroController.excluir}" process="@this"
-										update="@form"
-										disabled="#{cadastroController.entity.id == null}">
-										<p:confirm header="Confirmação"
-											message="Deseja realmente excluir?" icon="pi pi-info-circle" />
-									</p:commandButton>
-									<p:commandButton value="Limpar"
-										style="margin-left:10px;margin-right:10px;"
-										actionListener="#{cadastroController.limpar}" update="@form"
-										process="@this" />
-								</center>
-							</f:facet>
-						</p:panel>
+										action="#{cadastroController.incluir}" update="growl"
+										process="@form" />
+								</p:panel>
+							</p:tab>
+						</p:wizard>
 					</center>
 				</div>
 				<div></div>
