@@ -7,6 +7,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends DefaultEntity implements Serializable {
@@ -15,6 +18,7 @@ public class Usuario extends DefaultEntity implements Serializable {
 	@Column(length = 150)
 	private String email;
 	@OneToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
 	@Column(length = 30)

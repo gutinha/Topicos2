@@ -29,11 +29,6 @@ public class CadastroController extends Controller<PessoaFisica> implements Seri
 		super(new PessoaFisicaRepository());
 	}
 	
-	@Override
-	protected void limparRelacionamentosNaoObrigatorios() {
-		if (getEntity().getEndereco().getId() == null)
-			getEntity().setEndereco(null);
-	}
 
 	@Override
 	public PessoaFisica getEntity() {
