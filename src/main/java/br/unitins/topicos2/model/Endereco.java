@@ -17,7 +17,7 @@ public class Endereco extends DefaultEntity implements Serializable{
 	private String endereco;
 	@Column(length = 35)
 	private String cep;
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "id_cidade")
 	private Cidade cidade;
 	

@@ -4,11 +4,13 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.OptimisticLockException;
 import javax.persistence.Query;
 
 import br.unitins.topicos2.model.DefaultEntity;
 import br.unitins.topicos2.utils.JPAUtil;
 import br.unitins.topicos2.utils.RepositoryException;
+import br.unitins.topicos2.utils.VersionException;
 
 public class Repository<T extends DefaultEntity> {
 
@@ -19,11 +21,22 @@ public class Repository<T extends DefaultEntity> {
 		setEntityManager(JPAUtil.getEntityManager());
 	}
 
-	public void save(T entity) throws RepositoryException {
+	public T save(T entity) throws RepositoryException, VersionException {
 		try {
 			getEntityManager().getTransaction().begin();
-			getEntityManager().merge(entity);
+			entity = getEntityManager().merge(entity);
 			getEntityManager().getTransaction().commit();
+			return entity;
+		} catch (OptimisticLockException e) {
+			// excecao do @version
+			System.out.println("Problema com o controle de concorrencia.");
+			e.printStackTrace();
+			try {
+				getEntityManager().getTransaction().rollback();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			throw new VersionException("As informações estão antigas, dê um refresh.");
 		} catch (Exception e) {
 			System.out.println("Problema ao executar o save.");
 			e.printStackTrace();
@@ -80,9 +93,9 @@ public class Repository<T extends DefaultEntity> {
 			final ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
 			@SuppressWarnings("unchecked")
 			Class<T> tClass = (Class<T>) (type).getActualTypeArguments()[0];
-			
+
 			T t = (T) getEntityManager().find(tClass, id);
-			
+
 			return t;
 		} catch (Exception e) {
 			System.out.println("Erro ao executar o método de find.");
@@ -90,24 +103,24 @@ public class Repository<T extends DefaultEntity> {
 			throw new RepositoryException("Erro ao buscar os dados");
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() throws RepositoryException {
-        try {
-            // obtendo o tipo da classe de forma generica (a classe deve ser publica)
-            final ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
-            Class<T> tClass = (Class<T>) (type).getActualTypeArguments()[0];
-            
-            Query query = getEntityManager().createQuery("Select o FROM "+ tClass.getSimpleName() +" o");
-			List <T> lista = query.getResultList();
-            
-            return lista;
-        } catch (Exception e) {
-            System.out.println("Erro ao executar o método de findAll.");
-            e.printStackTrace();
-            throw new RepositoryException("Erro ao buscar os dados");
-        }
-    }
+		try {
+			// obtendo o tipo da classe de forma generica (a classe deve ser publica)
+			final ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
+			Class<T> tClass = (Class<T>) (type).getActualTypeArguments()[0];
+
+			Query query = getEntityManager().createQuery("Select o FROM " + tClass.getSimpleName() + " o");
+			List<T> lista = query.getResultList();
+
+			return lista;
+		} catch (Exception e) {
+			System.out.println("Erro ao executar o método de findAll.");
+			e.printStackTrace();
+			throw new RepositoryException("Erro ao buscar os dados");
+		}
+	}
 
 	protected EntityManager getEntityManager() {
 		return entityManager;

@@ -13,7 +13,7 @@ public class Estado extends DefaultEntity implements Serializable{
 	private String nome;
 	@Column(length = 5)
 	private String sigla;
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "id_pais")
 	private Pais pais;
 

@@ -4,6 +4,7 @@ import br.unitins.topicos2.model.DefaultEntity;
 import br.unitins.topicos2.repository.Repository;
 import br.unitins.topicos2.utils.RepositoryException;
 import br.unitins.topicos2.utils.Util;
+import br.unitins.topicos2.utils.VersionException;
 
 public abstract class Controller <T extends DefaultEntity> {
 	private Repository<T> repository;
@@ -17,10 +18,27 @@ public abstract class Controller <T extends DefaultEntity> {
 	public void incluir() {
 		try {
 			limparRelacionamentosNaoObrigatorios();
-			getRepository().save(getEntity());
+			setEntity(getRepository().save(getEntity()));
 			Util.addInfoMessage("Sucesso!", "Inclusão realizada com sucesso.");
 			limpar();
 		} catch (RepositoryException e) {
+			e.printStackTrace();
+			Util.addErrorMessage("Erro!", e.getMessage());
+		} catch (VersionException e) {
+			e.printStackTrace();
+			Util.addErrorMessage("Erro!", e.getMessage());
+		}
+	}
+	
+	public void salvarSemLimpar() {
+		try {
+			limparRelacionamentosNaoObrigatorios();
+			setEntity(getRepository().save(getEntity()));
+			Util.addInfoMessage("Sucesso!", "Salvo com sucesso.");
+		} catch (RepositoryException e) {
+			e.printStackTrace();
+			Util.addErrorMessage("Erro!", e.getMessage());
+		} catch (VersionException e) {
 			e.printStackTrace();
 			Util.addErrorMessage("Erro!", e.getMessage());
 		}
@@ -29,10 +47,13 @@ public abstract class Controller <T extends DefaultEntity> {
 	public void alterar() {
 		try {
 			limparRelacionamentosNaoObrigatorios();
-			getRepository().save(getEntity());
+			setEntity(getRepository().save(getEntity()));
 			Util.addInfoMessage("Sucesso", "Alteração realizada com sucesso.");
 			limpar();
 		} catch (RepositoryException e) {
+			e.printStackTrace();
+			Util.addErrorMessage("Erro!", e.getMessage());
+		} catch (VersionException e) {
 			e.printStackTrace();
 			Util.addErrorMessage("Erro!", e.getMessage());
 		}

@@ -15,7 +15,7 @@ public class Cidade extends DefaultEntity implements Serializable{
 	}
 	@Column(length = 55)
 	private String nome;
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "id_estado")
 	private Estado estado;
 
