@@ -1,7 +1,6 @@
 package br.unitins.topicos2.utils;
 import java.io.InputStream;
 import java.util.Properties;
-
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
 import jakarta.mail.PasswordAuthentication;
@@ -19,17 +18,12 @@ public class Email {
 	private String senha;
 	private String assunto;
 	private String emailDestino;
-	private String mensagem;
+	private String codigo;
 
-	public static void main(String[] args) {
-		Email email = new Email("gustavo.mx@unitins.br", "Teste 2", "Novo teste");
-		System.out.println(email.enviar());
-	}
-
-	public Email(String emailDestino, String assunto, String mensagem) {
+	public Email(String emailDestino, String assunto, String codigo) {
 		this.emailDestino = emailDestino;
 		this.assunto = assunto;
-		this.mensagem = mensagem;
+		this.codigo = codigo;
 
 		Properties prop = new Properties();
 		try (InputStream is = this.getClass().getResourceAsStream("/config/email.properties")){
@@ -61,11 +55,21 @@ public class Email {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(getUsuario()+"@gmail.com"));
+			message.setFrom(new InternetAddress(getUsuario()));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(getEmailDestino()));
 			message.setSubject(getAssunto());
-			message.setText(getMensagem());
+			Path path = Paths.get("E:\\Backup desktop\\Unitins\\Tópicos em programação 1\\Eclipse topicos\\workspace\\Topicos2\\src\\main\\webapp\\views\\BodyForgotPassword.html");
+		      
+	        try {
+	            String content = Files.readString(path);
+	            content = content.replace("T-000000", getCodigo());
+	            content = content.replace("CODIGO", getCodigo());
+	            //[T]{1}+[-]{1}+[0-9]{6}
+	            message.setContent(content, "text/html");
+	        }catch (IOException e){
+	            e.printStackTrace();
+	        }
 			
 			// enviando o email
 			Transport.send(message);
@@ -108,12 +112,12 @@ public class Email {
 		this.emailDestino = emailDestino;
 	}
 
-	public String getMensagem() {
-		return mensagem;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 }

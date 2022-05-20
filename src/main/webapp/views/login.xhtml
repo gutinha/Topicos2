@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Login</title>
+	<meta charset="utf-8"></meta>
+</h:head>
+<style type="text/css">
+.label {
+	width: 20%;
+	padding: 4px;
+}
+
+.value {
+	width: 80%;
+	padding: 4px;
+}
+
+.grid {
+	width: 100%;
+}
+
+.error {
+	color: red;
+}
+
+.outputLabel {
+	font-weight: bold;
+}
+
+.grid {
+	width: 33%;
+	padding: 4px;
+}
+</style>
+<h:body>
+	<ui:composition template="./template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<div class="login-container">
+					<p:growl id="growl" showDetail="true" />
+					<p:messages id="messages" showDetail="true">
+						<p:autoUpdate />
+					</p:messages>
+					<center>
+						<p:panel header="Login"
+							style="margin-top:150px;width:350px;">
+							<div class="p-grid ui-fluid">
+								<h:panelGrid columns="2">
+									<p:outputLabel value="E-mail: " />
+											<p:inputText value="#{loginController.entity.email}" />
+										<p:outputLabel value="Senha: " />
+										<p:password id="toggle" value="#{loginController.entity.senha}" toggleMask="true" redisplay="true"/>
+								</h:panelGrid>
+							</div>
+								<center style="margin-top:25px;">
+									<p:commandButton value="Login"
+										style="margin-left:10px;margin-right:10px;"
+										actionListener="#{loginController.login}"
+										update="@form" process="@form"
+										disabled="#{loginController.entity.id != null}" />
+									<p:commandButton value="Esqueceu a senha?" styleClass="ui-button-outlined"
+										style="margin-left:10px;margin-right:10px;"
+										actionListener="#{templateController.redirecionar('/esqueceuSenha')}"
+										update="@form" process="@form"/>
+								</center>
+						</p:panel>
+					</center>
+				</div>
+				<div></div>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

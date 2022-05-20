@@ -14,9 +14,10 @@
 		<class>br.unitins.topicos2.model.Pais</class>
 		<class>br.unitins.topicos2.model.PessoaFisica</class>
 		<class>br.unitins.topicos2.model.PessoaJuridica</class>
+		<class>br.unitins.topicos2.model.Usuario</class>
 		<class>br.unitins.topicos2.model.Servidor</class>
 		<class>br.unitins.topicos2.model.ServidorVM</class>
-		<class>br.unitins.topicos2.model.Usuario</class>
+		<class>br.unitins.topicos2.model.EsqueceuSenha</class>
 
 		<properties>
 				<!-- DB Driver -->
@@ -40,7 +41,7 @@
 				value="org.hibernate.dialect.PostgreSQLDialect" />
 
 				<!-- create / create-drop / update / none -->
-			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 
 				<!-- Show SQL in console -->
 			<property name="hibernate.show_sql" value="true" />
