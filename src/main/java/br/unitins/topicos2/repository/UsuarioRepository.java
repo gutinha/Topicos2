@@ -6,6 +6,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import br.unitins.topicos2.model.Usuario;
 import br.unitins.topicos2.utils.RepositoryException;
+import br.unitins.topicos2.utils.Util;
 
 public class UsuarioRepository extends Repository<Usuario> {
 	
@@ -36,6 +37,24 @@ public class UsuarioRepository extends Repository<Usuario> {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RepositoryException("Erro ao executar o findByEmail.");
+		}		
+	}
+	
+	public Usuario verifyLogin(String email, Usuario usu) throws RepositoryException {
+		try { 
+			String sql = "SELECT u FROM Usuario u WHERE u.email = ?0 and u.senha = ?1";
+			Query query = getEntityManager().createQuery(sql);
+			query.setParameter(0, email);
+			query.setParameter(1, Util.hash(usu));
+
+			return (Usuario) query.getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println(e.getMessage());
+			return null;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RepositoryException("Erro ao executar o verifyLogin.");
 		}		
 	}
 	

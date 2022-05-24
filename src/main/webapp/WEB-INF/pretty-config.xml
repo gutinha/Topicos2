@@ -33,6 +33,16 @@
 		<pattern value="/esqueceuSenha" />
 		<view-id value="/views/esqueceuSenha.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="redefinirSenha">
+		<pattern value="/redefinirSenha" />
+		<view-id value="/views/redefinirSenha.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="index">
+		<pattern value="/index" />
+		<view-id value="/views/index.xhtml" />
+	</url-mapping>
 
 
 </pretty-config>

@@ -16,20 +16,23 @@
 				<div class="login-container">
 					<p:growl id="growl" showDetail="true" />
 					<center>
-						<p:panel header="Esqueci a senha"
+						<p:panel header="Redefinir senha"
 							style="margin-top:150px;width:350px;margin-bottom:200px;">
 							<div class="p-grid ui-fluid">
-								<h:panelGrid columns="2">
-									<p:outputLabel value="E-mail: " />
-											<p:inputText value="#{esqueceuSenhaController.email}" />
-								</h:panelGrid>
+								<p:outputLabel value="Código: "
+									rendered="#{redefinirSenhaController.codigo == null}" />
+								<p:inputText value="#{redefinirSenhaController.codigo}" rendered="#{redefinirSenhaController.codigo == null}">
+								<p:ajax event="blur" update="@form" listener="#{redefinirSenhaController.validCodigo()}"></p:ajax>
+								</p:inputText>
+								<p:outputLabel value="Nova senha: " />
+								<p:inputText value="#{redefinirSenhaController.senha}" />
 							</div>
-								<center style="margin-top:25px;">
-									<p:commandButton value="Enviar"
-										style="margin-left:10px;margin-right:10px;"
-										actionListener="#{esqueceuSenhaController.enviarEmail}"
-										update="@form" process="@form"/>
-								</center>
+							<center style="margin-top: 25px;">
+								<p:commandButton value="Redefinir senha"
+									style="margin-left:10px;margin-right:10px;"
+									actionListener="#{redefinirSenhaController.redefinirSenha}"
+									update="@form" process="@form" />
+							</center>
 						</p:panel>
 					</center>
 				</div>

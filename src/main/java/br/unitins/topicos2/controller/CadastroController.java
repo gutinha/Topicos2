@@ -10,6 +10,7 @@ import br.unitins.topicos2.model.Cidade;
 import br.unitins.topicos2.model.Endereco;
 import br.unitins.topicos2.model.PessoaFisica;
 import br.unitins.topicos2.repository.PessoaFisicaRepository;
+import br.unitins.topicos2.utils.Util;
 
 @Named
 @ViewScoped
@@ -38,6 +39,11 @@ public class CadastroController extends Controller<PessoaFisica> implements Seri
 			entity.setPerfil("cliente");
         }
 		return entity;
+	}
+	
+	public void incluirHash() {
+		getEntity().setSenha(Util.hash(getEntity()));
+		incluir();
 	}
 	
 	public String onFlowProcess(FlowEvent event) {

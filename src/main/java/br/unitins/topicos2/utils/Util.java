@@ -11,6 +11,9 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+import br.unitins.topicos2.model.Usuario;
 import br.unitins.topicos2.servlet.ImgUsuarioServlet;
 
 public class Util {
@@ -23,6 +26,13 @@ public class Util {
 			System.out.println("Não foi possível realizar o redirecionamento.");
 			e.printStackTrace();
 		}
+	}
+	
+	private static String hash(String valor) {
+		return DigestUtils.sha256Hex(valor);
+	}
+	public static String hash(Usuario usuario) {
+		return hash(usuario.getEmail()+usuario.getSenha());
 	}
 	
 	private static void addMessage(String titulo, Severity severity, String content) {

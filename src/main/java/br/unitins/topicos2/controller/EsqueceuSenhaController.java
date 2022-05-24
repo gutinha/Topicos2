@@ -27,27 +27,27 @@ public class EsqueceuSenhaController implements Serializable {
 	private String email;
 	Usuario usuario = new Usuario();
 	String codigo = "";
-	
+
 	public void enviarEmail() {
-		// 1 - Buscar usuario
-		if(findUsuario() == false) {
+		if (findUsuario() == false) {
 			Util.addErrorMessage("Erro!", "E-mail não encontrado em nosso banco de dados.");
 			return;
-		};
-		// 2 - Gerar codigo
+		}
+
 		generateCodigo();
-		//3 - EsqueceuSenha - Salvar
-		if(generateEsqueceuSenha() == false) {
+
+		if (generateEsqueceuSenha() == false) {
 			Util.addErrorMessage("Erro!", "Não foi possível gerar a chave, tente novamente mais tarde.");
 			return;
 		}
-		// 4 - enviar email
+
 		Email email = new Email(usuario.getEmail(), "Redefinir senha", codigo);
 		if (!email.enviar()) {
 			Util.addErrorMessage("Erro!", "Problema ao enviar o email.");
 			return;
 		} else
 			Util.addInfoMessage("Sucesso!", "Código enviado para seu email.");
+			Util.redirect("/redefinirSenha");
 	}
 
 	public boolean generateEsqueceuSenha() {
@@ -61,11 +61,13 @@ public class EsqueceuSenhaController implements Serializable {
 		try {
 			repoEsqueceu.save(esqueceu);
 		} catch (RepositoryException e) {
-			//Util.addErrorMessage("Erro!", "Problema ao gerar o código, tente novamente.");
+			// Util.addErrorMessage("Erro!", "Problema ao gerar o código, tente
+			// novamente.");
 			e.printStackTrace();
 			return false;
 		} catch (VersionException e) {
-			//Util.addErrorMessage("Erro!", "Problema ao gerar o código, tente novamente.");
+			// Util.addErrorMessage("Erro!", "Problema ao gerar o código, tente
+			// novamente.");
 			e.printStackTrace();
 			return false;
 		}
@@ -77,12 +79,13 @@ public class EsqueceuSenhaController implements Serializable {
 		try {
 			usuario = repo.findByEmail(getEmail());
 			if (usuario == null) {
-				//Util.addErrorMessage("Erro!", "Email não encontrado em nosso banco de dados.");
+				// Util.addErrorMessage("Erro!", "Email não encontrado em nosso banco de
+				// dados.");
 				return false;
 			}
 		} catch (RepositoryException e) {
 			e.printStackTrace();
-			//Util.addErrorMessage("Erro!", "Problema ao encontrar o email.");
+			// Util.addErrorMessage("Erro!", "Problema ao encontrar o email.");
 			return false;
 		}
 		return true;

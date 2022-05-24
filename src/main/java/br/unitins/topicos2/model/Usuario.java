@@ -21,7 +21,7 @@ public class Usuario extends DefaultEntity implements Serializable {
 	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
-	@Column(length = 30)
+	@Column(length = 200)
 	private String senha;
 	@Column(length = 30)
 	private String telefone;
