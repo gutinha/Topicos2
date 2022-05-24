@@ -1,9 +1,6 @@
 package br.unitins.topicos2.controller;
 
 import java.io.Serializable;
-import java.util.Map;
-
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -19,8 +16,6 @@ import br.unitins.topicos2.utils.VersionException;
 @ViewScoped
 public class RedefinirSenhaController extends Controller<Usuario> implements Serializable {
 	private static final long serialVersionUID = 7042168092791308258L;
-	Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-	String codigoUrl = params.get("cod");
 	String codigo = null;
 	String senha = "";
 	EsqueceuSenhaRepository repoE = new EsqueceuSenhaRepository();
@@ -31,7 +26,7 @@ public class RedefinirSenhaController extends Controller<Usuario> implements Ser
 	public RedefinirSenhaController() {
 		super(new UsuarioRepository());
 	}
-
+	
 	@Override
 	public Usuario getEntity() {
 		if (entity == null) {
@@ -61,9 +56,6 @@ public class RedefinirSenhaController extends Controller<Usuario> implements Ser
 
 	public void redefinirSenha() {
 		try {
-			if(getCodigoUrl() != null) {
-				validCodigo();
-			}
 			if (isRetorno() == false) {
 				return;
 			}
@@ -104,9 +96,8 @@ public class RedefinirSenhaController extends Controller<Usuario> implements Ser
 	}
 
 	public String getCodigo() {
-		if(getCodigoUrl() != null) {
-			setCodigo(getCodigoUrl());
-		}
+		if (!validCodigo())
+			return null;
 		return codigo;
 	}
 
@@ -114,14 +105,6 @@ public class RedefinirSenhaController extends Controller<Usuario> implements Ser
 		this.codigo = codigo;
 	}
 	
-	public String getCodigoUrl() {
-		return codigoUrl;
-	}
-
-	public void setCodigoUrl(String codigo) {
-		this.codigoUrl = codigo;
-	}
-
 	public boolean isRetorno() {
 		return retorno;
 	}

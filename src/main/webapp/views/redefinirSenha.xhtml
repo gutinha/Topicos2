@@ -12,6 +12,11 @@
 <h:body>
 	<ui:composition template="./template.xhtml">
 		<ui:define name="conteudo">
+			<f:metadata>
+				<f:viewParam name="cod"
+					value="#{redefinirSenhaController.codigo}">
+				</f:viewParam>
+			</f:metadata>
 			<h:form>
 				<div class="login-container">
 					<p:growl id="growl" showDetail="true" />
@@ -21,8 +26,10 @@
 							<div class="p-grid ui-fluid">
 								<p:outputLabel value="Código: "
 									rendered="#{redefinirSenhaController.codigo == null}" />
-								<p:inputText value="#{redefinirSenhaController.codigo}" rendered="#{redefinirSenhaController.codigo == null}">
-								<p:ajax event="blur" update="@form" listener="#{redefinirSenhaController.validCodigo()}"></p:ajax>
+								<p:inputText value="#{redefinirSenhaController.codigo}"
+									rendered="#{redefinirSenhaController.codigo == null}">
+									<p:ajax event="blur" update="@form"
+										listener="#{redefinirSenhaController.validCodigo()}"></p:ajax>
 								</p:inputText>
 								<p:outputLabel value="Nova senha: " />
 								<p:inputText value="#{redefinirSenhaController.senha}" />
