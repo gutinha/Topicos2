@@ -35,6 +35,18 @@
 				</div>
 				<div></div>
 			</h:form>
+			
+			<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+
+    <p:dialog widgetVar="statusDialog" modal="false" draggable="false" closable="false" resizable="false" showHeader="false">
+        <div class="p-text-center">
+           <div class="loader-wrapper">
+           		<div class="loader">
+           			<div class="loader loader-inner"></div>
+           		</div>
+           </div>
+        </div>
+    </p:dialog>	
 
 		</ui:define>
 	</ui:composition>

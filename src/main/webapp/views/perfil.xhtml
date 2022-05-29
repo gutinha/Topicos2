@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Login</title>
+	<meta charset="utf-8"></meta>
+</h:head>
+<h:body>
+	<ui:composition template="./template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<div class="login-container">
+					<p:growl id="growl" showDetail="true" />
+					<p:messages id="messages" showDetail="true">
+						<p:autoUpdate />
+					</p:messages>
+					<center>
+						<h:panelGrid columns="2" style="margin-top:100px;">
+							<f:facet name="header">
+								<img class="img-responsive" id="img"
+									style="max-width: 130px !important; max-height: 130px !important; border-radius: 50%; margin-left: 100px;"
+									src="img-usuario?nome=#{perfilController.entity.id}.png"
+									onclick="PF('dlg3').show()" />
+							</f:facet>
+							<p:outputLabel value="Nome Fantasia: "
+								rendered="#{perfilController.instanceOfPf == false}" />
+							<p:outputLabel value="Nome: "
+								rendered="#{perfilController.instanceOfPf == true}"
+								style="color:white;" />
+							<p:inputText value="#{perfilController.entity.nome}" />
+							<p:outputLabel value="Sobrenome: "
+								rendered="#{perfilController.instanceOfPf == true}"
+								style="color:white;" />
+							<p:inputText value="#{perfilController.entity.sobrenome}"
+								rendered="#{perfilController.instanceOfPf == true}"
+								style="color:white;" />
+							<p:outputLabel value="CPF: "
+								rendered="#{perfilController.instanceOfPf == true}"
+								style="color:white;" />
+							<p:inputText value="#{perfilController.entity.cpf}"
+								rendered="#{perfilController.instanceOfPf == true}" />
+							<p:outputLabel value="Razão Social: "
+								rendered="#{perfilController.instanceOfPf == false}"
+								style="color:white;" />
+							<p:inputText value="#{perfilController.entity.razaoSocial}"
+								rendered="#{perfilController.instanceOfPf == false}" />
+							<p:outputLabel value="CNPJ: "
+								rendered="#{perfilController.instanceOfPf == false}"
+								style="color:white;" />
+							<p:inputText value="#{perfilController.entity.cnpj}"
+								rendered="#{perfilController.instanceOfPf == false}" />
+							<p:outputLabel value="Telefone: " style="color:white;" />
+							<p:inputText value="#{perfilController.entity.telefone}" />
+							<p:outputLabel value="Email: " style="color:white;" />
+							<p:inputText value="#{perfilController.entity.email}" />
+							<p:commandButton value="Alterar senha" icon="pi pi-external-link" />
+						</h:panelGrid>
+						<center style="margin-top: 25px;">
+							<p:commandButton value="Salvar" styleClass="ui-button-outlined"
+								style="margin-left:10px;margin-right:10px;"
+								actionListener="#{perfilController.alterar}" update="@form"
+								process="@form" />
+						</center>
+					</center>
+				</div>
+			</h:form>
+			
+			<p:dialog header="Criar conta" widgetVar="dlg3" minHeight="100"
+					width="650" showEffect="fade" modal="true" draggable="false">
+					<center>
+						<h:form enctype="multipart/form-data">
+							<p:fileUpload id="fileUpload"
+								listener="#{perfilController.upload}" mode="advanced"
+								update="fileUpload @form" label="Selecione uma foto ..."
+								global="false">
+							</p:fileUpload>
+							<p:growl id="messages" showDetail="true" />
+						</h:form>
+					</center>
+				</p:dialog>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

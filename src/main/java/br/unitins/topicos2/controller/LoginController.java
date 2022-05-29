@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+
 import br.unitins.topicos2.model.Usuario;
 import br.unitins.topicos2.repository.UsuarioRepository;
 import br.unitins.topicos2.utils.RepositoryException;
@@ -44,6 +45,10 @@ public class LoginController extends Controller<Usuario> implements Serializable
 			Util.addErrorMessage("Erro!", "Problema ao fazer login");
 			e.printStackTrace();
 		}
+	}
+	
+	public void abrirCadastro() {
+		
 	}
 
 }

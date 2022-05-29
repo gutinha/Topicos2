@@ -25,6 +25,7 @@ public class RedefinirSenhaController extends Controller<Usuario> implements Ser
 
 	public RedefinirSenhaController() {
 		super(new UsuarioRepository());
+		validCodigo();
 	}
 	
 	@Override
@@ -77,6 +78,7 @@ public class RedefinirSenhaController extends Controller<Usuario> implements Ser
 				try {
 					repoU.save(getEntity());
 					Util.addInfoMessage("Sucesso!", "Senha alterada com sucesso");
+					Util.redirect("/index");
 				} catch (VersionException e) {
 					e.printStackTrace();
 				}
@@ -96,8 +98,6 @@ public class RedefinirSenhaController extends Controller<Usuario> implements Ser
 	}
 
 	public String getCodigo() {
-		if (!validCodigo())
-			return null;
 		return codigo;
 	}
 

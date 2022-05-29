@@ -17,6 +17,8 @@ public class Usuario extends DefaultEntity implements Serializable {
 
 	@Column(length = 150)
 	private String email;
+	@Column(length = 100)
+	private String nome;
 	@OneToOne
 	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "id_endereco")
@@ -27,6 +29,14 @@ public class Usuario extends DefaultEntity implements Serializable {
 	private String telefone;
 	@Column(length = 30)
 	private String perfil;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	public String getEmail() {
 		return email;

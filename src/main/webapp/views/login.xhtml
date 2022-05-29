@@ -63,6 +63,7 @@
 										actionListener="#{loginController.login}"
 										update="@form" process="@form"
 										disabled="#{loginController.entity.id != null}" />
+									<p:commandButton value="Criar conta" type="button" icon="pi pi-external-link" onclick="PF('dlg3').show()"/>
 									<p:commandButton value="Esqueceu a senha?" styleClass="ui-button-outlined"
 										style="margin-left:10px;margin-right:10px;"
 										actionListener="#{templateController.redirecionar('/esqueceuSenha')}"
@@ -73,6 +74,13 @@
 				</div>
 				<div></div>
 			</h:form>
+
+<p:dialog header="Criar conta" widgetVar="dlg3" minHeight="40" width="350" showEffect="fade" modal="true" draggable="false">
+       <center>
+        <p:commandButton actionListener="#{templateController.redirecionar('/cadastroPF')}" value="Pessoa Física" style="width: 6rem;margin-left: 10px" />
+        <p:commandButton actionListener="#{templateController.redirecionar('/cadastroPJ')}" value="Pessoa Jurídica" style="width: 5rem;margin-left: 10px" />
+        </center>
+</p:dialog>
 
 		</ui:define>
 	</ui:composition>

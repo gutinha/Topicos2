@@ -4,9 +4,14 @@
 	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
 
-	<url-mapping id="cadastro">
-		<pattern value="/cadastro" />
-		<view-id value="/views/cadastro.xhtml" />
+	<url-mapping id="cadastroPF">
+		<pattern value="/cadastroPF" />
+		<view-id value="/views/cadastroPF.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="cadastroPJ">
+		<pattern value="/cadastroPJ" />
+		<view-id value="/views/cadastroPJ.xhtml" />
 	</url-mapping>
 
 	<url-mapping id="cadastroPais">
@@ -42,6 +47,11 @@
 	<url-mapping id="index">
 		<pattern value="/index" />
 		<view-id value="/views/index.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="perfil">
+		<pattern value="/perfil" />
+		<view-id value="/views/perfil.xhtml" />
 	</url-mapping>
 
 
