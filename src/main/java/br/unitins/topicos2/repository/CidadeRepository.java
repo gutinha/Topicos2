@@ -19,4 +19,17 @@ public class CidadeRepository extends Repository<Cidade>{
 		}
 	}
 
+	public List<Object[]> findByNomeSQL(String nome) throws RepositoryException {
+		try { 
+			String sql = "SELECT c.id, c.nome, e.nome as nomeEstado, e.sigla FROM Cidade c, Estado e WHERE c.id_estado = e.id AND lower(c.nome) LIKE lower(:nome) or lower(e.nome) LIKE lower(:nome)";
+			Query query = getEntityManager().createNativeQuery(sql.toString());
+			query.setParameter("nome", "%" + nome + "%");
+
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RepositoryException("Erro ao executar o findByNomeSQL.");
+		}
+	}
+
 }

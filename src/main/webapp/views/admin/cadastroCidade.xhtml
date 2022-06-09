@@ -37,27 +37,13 @@
 											<p:inputText value="#{cadastroCidadeController.entity.nome}" />
 										</div>
 									</h:panelGroup>
-									<p:outputLabel for="@next" value="Estado:" />
-											<p:selectOneMenu id="advanced"
-												value="#{cadastroCidadeController.entity.estado}"
-												converter="estadoConverter" panelStyle="width:180px"
-												effect="fade" var="c" filter="true"
-												filterMatchMode="startsWith">
-												<f:selectItems value="#{cadastroCidadeController.listEstado}"
-													var="estado" itemLabel="#{estado.nome}"
-													itemValue="#{estado}" />
-												<p:column>
-													<f:facet name="header">
-														<h:outputText value="Nome" />
-													</f:facet>
-													<h:outputText value="#{c.nome}" />
-												</p:column>
-												<f:facet name="footer">
-													<h:outputText
-														value="#{cadastroCidadeController.listEstado.size()} Estados"
-														style="font-weight:bold;" styleClass="p-py-1 p-d-block" />
-												</f:facet>
-											</p:selectOneMenu>
+									<p:outputLabel value="Estado:" />
+									<p:autoComplete value="#{cadastroCidadeController.entity.estado}"
+										var="estado" itemLabel="#{estado.nome}" itemValue="#{estado}"
+										completeMethod="#{cadastroCidadeController.completeEstado}"
+										converter="estadoConverter"
+										forceSelection="true" maxResults="3" dropdown="true"
+										moreText="... mais resultados" scrollHeight="250" />
 								</h:panelGrid>
 							</div>
 							<f:facet name="footer">

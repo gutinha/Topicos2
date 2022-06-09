@@ -3,6 +3,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -15,7 +16,7 @@ public class Cidade extends DefaultEntity implements Serializable{
 	}
 	@Column(length = 55)
 	private String nome;
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_estado")
 	private Estado estado;
 

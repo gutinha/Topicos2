@@ -2,6 +2,8 @@ package br.unitins.topicos2.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -27,8 +29,8 @@ public class Usuario extends DefaultEntity implements Serializable {
 	private String senha;
 	@Column(length = 30)
 	private String telefone;
-	@Column(length = 30)
-	private String perfil;
+	@Enumerated(EnumType.ORDINAL)
+	private Perfil perfil;
 
 	public String getNome() {
 		return nome;
@@ -69,12 +71,10 @@ public class Usuario extends DefaultEntity implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-
-	public String getPerfil() {
+	public Perfil getPerfil() {
 		return perfil;
 	}
-
-	public void setPerfil(String perfil) {
+	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
 

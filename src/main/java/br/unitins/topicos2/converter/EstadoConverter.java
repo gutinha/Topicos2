@@ -4,8 +4,10 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import br.unitins.topicos2.model.Estado;
+import javax.inject.Named;
 
+import br.unitins.topicos2.model.Estado;
+@Named
 @FacesConverter(value = "estadoConverter", forClass=Estado.class)
 public class EstadoConverter implements Converter<Object>{
 	@Override
