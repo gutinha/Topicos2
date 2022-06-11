@@ -43,13 +43,13 @@
 			<h:form>
 				<div class="login-container">
 					<p:growl id="growl" showDetail="true" />
-					<p:messages id="messages" showDetail="true">
-						<p:autoUpdate />
-					</p:messages>
 					<center>
 						<p:wizard flowListener="#{cadastroPJController.onFlowProcess}"
 							style="margin-top:110px;width:550px;margin-bottom:20px;" backLabel="Voltar" nextLabel="Avançar">
 							<p:tab id="personal" title="Dados">
+							<p:messages id="messages" showDetail="false">
+									<p:autoUpdate />
+								</p:messages>
 								<p:panel header="Dados básicos">
 									<p:messages />
 									<div class="p-grid ui-fluid">
@@ -61,11 +61,15 @@
 											<p:outputLabel value="Razão Social: " />
 											<p:inputText value="#{cadastroPJController.entity.razaoSocial}" />
 											<p:outputLabel value="CNPJ: " />
-											<p:inputText value="#{cadastroPJController.entity.cnpj}" />
+											<p:inputText value="#{cadastroPJController.entity.cnpj}">
+											<p:ajax event="blur" update="messages"></p:ajax>
+											</p:inputText>
 											<p:outputLabel value="Telefone: " />
 											<p:inputText value="#{cadastroPJController.entity.telefone}" />
 											<p:outputLabel value="Email: " />
-											<p:inputText value="#{cadastroPJController.entity.email}" />
+											<p:inputText value="#{cadastroPJController.entity.email}">
+											<p:ajax event="blur" update="messages"></p:ajax>
+											</p:inputText>
 											<p:outputLabel value="Senha: " />
 											<p:password id="toggle"
 												value="#{cadastroPJController.entity.senha}" toggleMask="true"
@@ -102,7 +106,7 @@
 											</div>
 										</h:panelGroup>
 									</h:panelGrid>
-									<p:commandButton value="Incluir"
+									<p:commandButton value="Cadastrar"
 										action="#{cadastroPJController.incluirHash}" update="growl"
 										process="@form" />
 								</p:panel>

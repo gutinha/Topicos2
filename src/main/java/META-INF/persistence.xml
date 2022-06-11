@@ -4,20 +4,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="Topicos2">
+		<class>br.unitins.topicos2.converter.PerfilConverter</class>
 		<class>br.unitins.topicos2.model.Cidade</class>
 		<class>br.unitins.topicos2.model.DefaultEntity</class>
 		<class>br.unitins.topicos2.model.Dominio</class>
 		<class>br.unitins.topicos2.model.Endereco</class>
+		<class>br.unitins.topicos2.model.EsqueceuSenha</class>
 		<class>br.unitins.topicos2.model.Estado</class>
 		<class>br.unitins.topicos2.model.MeioPagamento</class>
 		<class>br.unitins.topicos2.model.Pagamento</class>
 		<class>br.unitins.topicos2.model.Pais</class>
 		<class>br.unitins.topicos2.model.PessoaFisica</class>
 		<class>br.unitins.topicos2.model.PessoaJuridica</class>
-		<class>br.unitins.topicos2.model.Usuario</class>
 		<class>br.unitins.topicos2.model.Servidor</class>
 		<class>br.unitins.topicos2.model.ServidorVM</class>
-		<class>br.unitins.topicos2.model.EsqueceuSenha</class>
+	<class>br.unitins.topicos2.model.Usuario</class>
 
 		<properties>
 				<!-- DB Driver -->

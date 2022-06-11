@@ -8,6 +8,7 @@ import org.primefaces.event.SelectEvent;
 import br.unitins.topicos2.controller.listing.CidadeListing;
 import br.unitins.topicos2.model.Cidade;
 import br.unitins.topicos2.model.Endereco;
+import br.unitins.topicos2.model.Perfil;
 import br.unitins.topicos2.model.PessoaJuridica;
 import br.unitins.topicos2.repository.PessoaJuridicaRepository;
 import br.unitins.topicos2.utils.Util;
@@ -36,7 +37,7 @@ public class CadastroPJController extends Controller<PessoaJuridica> implements 
 		if (entity == null) {
 			entity = new PessoaJuridica();
 			entity.setEndereco(new Endereco(new Cidade()));
-			entity.setPerfil("cliente");
+			entity.setPerfil(Perfil.CLIENTE);
         }
 		return entity;
 	}

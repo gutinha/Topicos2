@@ -43,33 +43,38 @@
 			<h:form>
 				<div class="login-container">
 					<p:growl id="growl" showDetail="true" />
-					<p:messages id="messages" showDetail="true">
-						<p:autoUpdate />
-					</p:messages>
 					<center>
 						<p:wizard flowListener="#{cadastroController.onFlowProcess}"
-							style="margin-top:110px;width:550px;margin-bottom:20px;" backLabel="Voltar" nextLabel="Avançar">
+							style="margin-top:110px;width:550px;margin-bottom:20px;"
+							backLabel="Voltar" nextLabel="Avançar">
 							<p:tab id="personal" title="Dados">
+								<p:messages id="messages" showDetail="false">
+									<p:autoUpdate />
+								</p:messages>
+								
 								<p:panel header="Dados básicos">
-									<p:messages />
 									<div class="p-grid ui-fluid">
 										<h:panelGrid columns="2">
 											<p:outputLabel value="Nome: " />
 											<h:panelGroup>
-												<p:inputText value="#{cadastroController.entity.nome}" />
+												<p:inputText value="#{cadastroController.entity.nome}" required="" requiredMessage="Digite um nome"/>
 											</h:panelGroup>
-											<p:outputLabel value="Sobrenome: " />
-											<p:inputText value="#{cadastroController.entity.sobrenome}" />
+											<p:outputLabel value="Sobrenome: "/>
+											<p:inputText value="#{cadastroController.entity.sobrenome}" required="" requiredMessage="Digite um sobrenome"/>
 											<p:outputLabel value="CPF: " />
-											<p:inputText value="#{cadastroController.entity.cpf}" />
+											<p:inputText value="#{cadastroController.entity.cpf}">
+											<p:ajax event="blur" update="messages"></p:ajax>
+											</p:inputText>
 											<p:outputLabel value="Email: " />
-											<p:inputText value="#{cadastroController.entity.email}" />
+											<p:inputText value="#{cadastroController.entity.email}">
+											<p:ajax event="blur" update="messages"></p:ajax>
+											</p:inputText>
 											<p:outputLabel value="Telefone: " />
 											<p:inputText value="#{cadastroController.entity.telefone}" />
 											<p:outputLabel value="Senha: " />
 											<p:password id="toggle"
 												value="#{cadastroController.entity.senha}" toggleMask="true"
-												redisplay="true" />
+												redisplay="true" feedback="true"/>
 										</h:panelGrid>
 									</div>
 								</p:panel>
@@ -102,7 +107,7 @@
 											</div>
 										</h:panelGroup>
 									</h:panelGrid>
-									<p:commandButton value="Incluir"
+									<p:commandButton value="Cadastrar"
 										action="#{cadastroController.incluirHash}" update="growl"
 										process="@form" />
 								</p:panel>

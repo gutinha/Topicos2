@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Trocar foto de perfil</title>
+</h:head>
+<h:body>
+	<center>
+		<h:form enctype="multipart/form-data">
+			<p:fileUpload id="fileUpload" listener="#{perfilController.upload}"
+				mode="advanced" process="fileUpload @form"
+				update="fileUpload @form messages" label="Selecione uma foto ..."
+				global="false">
+			</p:fileUpload>
+			<p:growl id="messages" showDetail="true" />
+		</h:form>
+	</center>
+</h:body>
+</html>

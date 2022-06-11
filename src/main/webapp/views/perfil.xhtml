@@ -57,9 +57,9 @@
 							<p:inputText value="#{perfilController.entity.telefone}" />
 							<p:outputLabel value="Email: " style="color:white;" />
 							<p:inputText value="#{perfilController.entity.email}" />
-							<p:commandButton value="Alterar senha" icon="pi pi-external-link" />
 						</h:panelGrid>
 						<center style="margin-top: 25px;">
+							<p:commandButton value="Alterar senha" icon="pi pi-external-link" />
 							<p:commandButton value="Salvar" styleClass="ui-button-outlined"
 								style="margin-left:10px;margin-right:10px;"
 								actionListener="#{perfilController.alterar}" update="@form"
@@ -69,19 +69,20 @@
 				</div>
 			</h:form>
 			
-			<p:dialog header="Criar conta" widgetVar="dlg3" minHeight="100"
+			<p:dialog header="Trocar foto" widgetVar="dlg3" minHeight="100"
 					width="650" showEffect="fade" modal="true" draggable="false">
 					<center>
-						<h:form enctype="multipart/form-data">
+						<h:form enctype="multipart/form-data" id="formFoto">
 							<p:fileUpload id="fileUpload"
 								listener="#{perfilController.upload}" mode="advanced"
-								update="fileUpload @form" label="Selecione uma foto ..."
+								process="@this"
+								update="fileUpload @form messages" label="Selecione uma foto ..."
 								global="false">
 							</p:fileUpload>
 							<p:growl id="messages" showDetail="true" />
 						</h:form>
 					</center>
-				</p:dialog>
+			</p:dialog>
 
 		</ui:define>
 	</ui:composition>

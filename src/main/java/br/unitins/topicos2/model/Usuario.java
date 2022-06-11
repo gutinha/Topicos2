@@ -2,12 +2,12 @@ package br.unitins.topicos2.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -16,7 +16,8 @@ import org.hibernate.annotations.CascadeType;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends DefaultEntity implements Serializable {
 	private static final long serialVersionUID = 512261310652722752L;
-
+	@Email(message = "Informe um email válido")
+	@NotBlank(message = "Não pode ser vazio")
 	@Column(length = 150)
 	private String email;
 	@Column(length = 100)
@@ -29,7 +30,6 @@ public class Usuario extends DefaultEntity implements Serializable {
 	private String senha;
 	@Column(length = 30)
 	private String telefone;
-	@Enumerated(EnumType.ORDINAL)
 	private Perfil perfil;
 
 	public String getNome() {

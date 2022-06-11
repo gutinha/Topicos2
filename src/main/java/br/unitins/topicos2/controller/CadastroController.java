@@ -8,8 +8,10 @@ import org.primefaces.event.SelectEvent;
 import br.unitins.topicos2.controller.listing.CidadeListing;
 import br.unitins.topicos2.model.Cidade;
 import br.unitins.topicos2.model.Endereco;
+import br.unitins.topicos2.model.Perfil;
 import br.unitins.topicos2.model.PessoaFisica;
 import br.unitins.topicos2.repository.PessoaFisicaRepository;
+import br.unitins.topicos2.utils.Session;
 import br.unitins.topicos2.utils.Util;
 
 @Named
@@ -36,14 +38,16 @@ public class CadastroController extends Controller<PessoaFisica> implements Seri
 		if (entity == null) {
 			entity = new PessoaFisica();
 			entity.setEndereco(new Endereco(new Cidade()));
-			entity.setPerfil("cliente");
+			entity.setPerfil(Perfil.CLIENTE);
         }
 		return entity;
 	}
 	
 	public void incluirHash() {
 		getEntity().setSenha(Util.hash(getEntity()));
+		Session.getInstance().set("usuarioLogado", getEntity());
 		incluir();
+		Util.redirect("/index");
 	}
 	
 	public String onFlowProcess(FlowEvent event) {

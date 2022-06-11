@@ -9,7 +9,10 @@
 	<title>HypeHost - Servidores com Anti-DDoS Premium no Brasil</title>
 	<meta name="description"
 		content="A HypeHost possibilita que usuários e empresas criem e hospedem conteúdo na internet através da infraestrutura de cloud computing segura e automatizada." />
-
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="keywords"
 		content="vps windows, vps linux, cloud vps, servidor vps, vps anti-ddos, proteção ddos, vps ssd, vps nvme" />
 	<meta charset="utf-8" name="viewport"
@@ -22,19 +25,10 @@
 
 	<link rel="icon" type="image/png" sizes="16x16"
 		href="https://i.imgur.com/opFuBQh.png" />
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-		crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-	<link rel="stylesheet"
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-		crossorigin="anonymous" />
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-		crossorigin="anonymous" type="text/javascript"></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous" type="text/javascript"></script>
 	<link rel="stylesheet" href="../Topicos2/resources/css/reset.css" />
 	<link rel="stylesheet" href="../Topicos2/resources/css/template.css" />
 	<link rel="stylesheet" href="../Topicos2/resources/css/cadastro.css" />
@@ -45,8 +39,6 @@
 	<link rel="stylesheet" href="../../Topicos2/resources/css/reset.css" />
 	<link rel="stylesheet" href="../../Topicos2/resources/css/template.css" />
 	<!--  -->
-
-
 </h:head>
 
 <h:body>
@@ -87,8 +79,7 @@
 							<div class="row">
 								<div
 									class="col-xl-3 col-md-7 col-9 d-flex justify-content-start align-items-center">
-									<a href="/Topicos2/index" title="HypeHost"
-										class="logo"> <img
+									<a href="/Topicos2/index" title="HypeHost" class="logo"> <img
 										src="https://gist.githubusercontent.com/gutinha/51ab3e3fbfff38bac90bd0852893c2d3/raw/c16ff3e7405a66f8a9f939ded0551a4ec6801906/hypehost3.svg"
 										alt="HypeHost logo" />
 									</a>
@@ -102,7 +93,8 @@
 											alt="HypeHost logo" />
 										</a>
 										<ul>
-											<li><a href="/Topicos2/index" title="Início"> Início </a></li>
+											<li><a href="/Topicos2/index" title="Início"> Início
+											</a></li>
 											<li class="dropdown"><a href="#"
 												title="Serviços de hospedagem para sites, jogos e outros"
 												class="dropdown-toggle" role="button" id="host-menu"
@@ -172,18 +164,24 @@
 											<li><a href="#"
 												title="Veja algumas promoções que separamos"> Promoções
 											</a></li>
-											<h:form rendered="#{templateController.entity == null ? 'true' : 'false'}">
-											<li><a href="/Topicos2/login" title="Área do cliente" class="btn">
-													Área do Cliente </a></li>
+											<h:form
+												rendered="#{templateController.entity == null ? 'true' : 'false'}">
+												<li><a href="/Topicos2/login" title="Área do cliente"
+													class="btn"> Área do Cliente </a></li>
 											</h:form>
-											<h:form rendered="#{templateController.entity == null ? 'false' : 'true'}">
-											<li class="dropdown">
-												<a class="dropdown-toggle" data-bs-toggle="dropdown" role="button" href="#">Olá, #{templateController.entity.nome}</a>
-												<ul class="dropdown-menu" aria-labelledby="user-menu">
-													<li><a class="dropdown-item" href="/Topicos2/perfil">Meu perfil</a></li>
-												</ul>
-											</li>
-											<li> <img style="max-width: 30px;max-height: 30px;border-radius: 50%" class="img-responsive" src="img-usuario?nome=#{templateController.entity.id}.png"/></li>
+											<h:form
+												rendered="#{templateController.entity == null ? 'false' : 'true'}">
+												<li class="dropdown"><a class="dropdown-toggle"
+													data-bs-toggle="dropdown" role="button" href="#">Olá,
+														#{templateController.entity.nome}</a>
+													<ul class="dropdown-menu" aria-labelledby="user-menu">
+														<li><a class="dropdown-item" href="/Topicos2/perfil">Meu
+																perfil</a></li>
+													</ul></li>
+												<li><img
+													style="max-width: 30px; max-height: 30px; border-radius: 50%"
+													class="img-responsive"
+													src="img-usuario?nome=#{templateController.entity.id}.png" /></li>
 											</h:form>
 										</ul>
 										<button class="menu-btn d-xl-none">
@@ -254,7 +252,8 @@
 							</div>
 							<div class="col-lg-3 col-12 col-logo">
 								<a href="#" class="logo" title="HypeHost"> <img
-									src="https://gist.githubusercontent.com/gutinha/51ab3e3fbfff38bac90bd0852893c2d3/raw/c16ff3e7405a66f8a9f939ded0551a4ec6801906/hypehost2.svg" alt="HypeHost" />
+									src="https://gist.githubusercontent.com/gutinha/51ab3e3fbfff38bac90bd0852893c2d3/raw/c16ff3e7405a66f8a9f939ded0551a4ec6801906/hypehost2.svg"
+									alt="HypeHost" />
 								</a>
 								<p>A HypeHost oferece serviços de infraestrutura em nuvem
 									para pessoas e empresas que precisam hospedar na internet.</p>

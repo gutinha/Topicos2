@@ -66,8 +66,7 @@
 									<p:commandButton value="Criar conta" type="button" icon="pi pi-external-link" onclick="PF('dlg3').show()"/>
 									<p:commandButton value="Esqueceu a senha?" styleClass="ui-button-outlined"
 										style="margin-left:10px;margin-right:10px;"
-										actionListener="#{templateController.redirecionar('/esqueceuSenha')}"
-										update="@form" process="@form"/>
+										actionListener="#{templateController.redirecionar('/esqueceuSenha')}" process="@this"/>
 								</center>
 						</p:panel>
 					</center>
