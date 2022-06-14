@@ -35,6 +35,10 @@ public class Util {
 		return hash(usuario.getEmail()+usuario.getSenha());
 	}
 	
+	public static String hash(Usuario usuario, String senha) {
+		return hash(usuario.getEmail()+senha);
+	}
+	
 	private static void addMessage(String titulo, Severity severity, String content) {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, titulo, content));
 	}

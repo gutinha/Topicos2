@@ -40,12 +40,148 @@
 <h:body>
 	<ui:composition template="./template.xhtml">
 		<ui:define name="conteudo">
-					<p:growl id="growl" showDetail="true" />
-					<p:messages id="messages" showDetail="true">
-						<p:autoUpdate />
-					</p:messages>
-					<p:inputText placeholder="Testando"></p:inputText>
-					
+			<p:growl id="growl" showDetail="true" />
+			<p:messages id="messages" showDetail="true">
+				<p:autoUpdate />
+			</p:messages>
+			<div class="card" style="margin-top: 150px;">
+				<p:carousel circular="true">
+					<p:tab>
+						<h2>Servidores Dedicados no Brasil</h2>
+						<h3>Crie instâncias em minutos com nosso sistema de
+							automação.</h3>
+						<ul class="check col2">
+							<li>Painel de gerenciamento</li>
+							<li>Uptime 99.99% SLA</li>
+							<li>Portas de até 10Gbps</li>
+							<li>Instalação automatizada</li>
+							<li>Suporte técnico 24/7</li>
+							<li>Proteção DDoS</li>
+						</ul>
+						<a href="#" title="Ver planos disponíveis" class="btn big">
+							Ver planos disponíveis </a>
+					</p:tab>
+					<p:tab>
+						<h2>VPS Game no Brasil</h2>
+						<h3>Conte com nossa infraestrutura Anti-DDoS no Brasil para
+							um ambiente seguro e estável.</h3>
+						<ul class="check col2">
+							<li>Painel de gerenciamento</li>
+							<li>NoVNC Console via navegador</li>
+							<li>Implementação em segundos</li>
+							<li>Reinstalação em minutos</li>
+							<li>Anti-DDoS PRO</li>
+							<li>Virtualizados com KVM</li>
+						</ul>
+						<a href="#" title="Veja nossos planos" class="btn big"> Veja
+							nossos planos </a>
+					</p:tab>
+				</p:carousel>
+
+				<section class="planos wave-bg-bot" style="margin-top: 300px;">
+					<div class="container">
+						<div class="row row-planos">
+							<div class="col-lg-3 col-12 col-md-6 col-sm-6">
+								<div class="plano-tab">
+									<div>
+										<figure>
+											<i class="fas fa-rocket index-icon"></i>
+										</figure>
+										<h3>Cloud VPS Premium</h3>
+										<p>
+											À partir de:<br /> <span class="price"> R$ <strong>29,99</strong>
+												/ mês
+											</span><br /> * baseado no ciclo semestral
+										</p>
+										<hr />
+										<p>Suas aplicações estarão muito mais confiáveis em um
+											ambiente premium.</p>
+										<a href="#" class="btn btn-black"
+											title="Ver Planos"> Ver Planos </a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-12 col-md-6 col-sm-6">
+								<div class="plano-tab">
+									<div>
+										<figure>
+											<i class="fas fa-money-bill-alt index-icon"></i>
+										</figure>
+										<h3>VPS OUTLET</h3>
+										<p>
+											A partir de:<br /> <span class="price"> R$ <strong>24,43</strong>
+												/ mês
+											</span><br /> * baseado no ciclo trimestral
+										</p>
+										<hr />
+										<p>Melhor custo benefício do mercado com armazenamento SSD
+											ou SATA.</p>
+										<a href="#"
+											class="btn btn-black" title="Ver Planos"> Ver Planos </a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-12 col-md-6 col-sm-6">
+								<div class="plano-tab">
+									<div>
+										<figure>
+											<i class="fas fa-globe index-icon"></i>
+										</figure>
+										<h3>Registro de dominíos</h3>
+										<p>
+											A partir de:<br /> <span class="price"> R$ <strong>40</strong>
+												/ ano
+											</span><br /> * baseado no ciclo anual
+										</p>
+										<hr />
+										<p>Compre seu dominío em um site com dns gerenciável e
+											uptime 99.9%.</p>
+										<a href="#"
+											class="btn btn-black" title="Ver Planos"> Ver Planos </a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-12 col-md-6 col-sm-6">
+								<div class="plano-tab">
+									<div>
+										<figure>
+											<i class="fas fa-coins index-icon"></i>
+										</figure>
+										<h3>Servidores no Brasil</h3>
+										<p>
+											A partir de:<br /> <span class="price"> R$ <strong>69,99</strong>
+												/ mês
+											</span><br /> Em São Paulo com Anti-DDoS
+										</p>
+										<hr />
+										<p>Planos à patir de 2GB de memória RAM DDR4 com
+											armazenamento SSD.</p>
+										<a href="#" class="btn btn-black"
+											title="Ver Planos"> Ver Planos </a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<p:carousel circular="false">
+								<img src="https://i.imgur.com/60fzJii.png" alt="Cisco"
+									style="width: 159.2px;margin-left:10px" />
+								<img src="https://i.imgur.com/WtjbB5W.png" alt="Cloud Linux"
+									style="width: 159.2px;margin-left:10px" />
+								<img src="https://i.imgur.com/NbrqYHj.png" alt="Cpanel"
+									style="width: 159.2px;margin-left:10px" />
+								<img src="https://i.imgur.com/O2JphRn.png" alt="Intel"
+									style="width: 159.2px;margin-left:10px" />
+								<img src="https://i.imgur.com/puu1xrL.png" alt="Parallels"
+									style="width: 159.2px;margin-left:10px" />
+								<img src="https://i.imgur.com/xsSVI1C.png" alt="VM Ware"
+									style="width: 159.2px;margin-left:10px" />
+							</p:carousel>
+						</div>
+					</div>
+				</section>
+			</div>
+
 
 		</ui:define>
 	</ui:composition>

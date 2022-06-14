@@ -6,11 +6,10 @@ import java.io.Serializable;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
-import br.unitins.topicos2.controller.listing.PaisListing;
+import br.unitins.topicos2.controller.listing.TrocaSenhaListing;
 import br.unitins.topicos2.model.PessoaFisica;
 import br.unitins.topicos2.model.PessoaJuridica;
 import br.unitins.topicos2.model.Usuario;
@@ -23,6 +22,7 @@ import br.unitins.topicos2.utils.Util;
 public class PerfilController extends Controller<Usuario> implements Serializable {
 	private static final long serialVersionUID = -6192990699589999580L;
 	private InputStream fotoInputStream = null;
+
 	public PerfilController() {
 		super(new UsuarioRepository());
 	}
@@ -78,7 +78,6 @@ public class PerfilController extends Controller<Usuario> implements Serializabl
 		limpar();
 	}
 
-
 	public InputStream getFotoInputStream() {
 		return fotoInputStream;
 	}
@@ -95,11 +94,12 @@ public class PerfilController extends Controller<Usuario> implements Serializabl
 		return entity;
 	}
 	
-	public void abrirPaisListing() {
-		PaisListing listing = new PaisListing();
+	public void abrirTrocaSenhaListing() {
+		TrocaSenhaListing listing = new TrocaSenhaListing();
 		listing.open();
 	}
-
+	
+	//retorna a instancia de pessoa fisica ou juridica - usado pra renderizar os campos
 	public boolean getInstanceOfPf() {
 		if (getEntity() instanceof PessoaFisica) {
 			return true;
@@ -110,5 +110,5 @@ public class PerfilController extends Controller<Usuario> implements Serializabl
 		}
 		
 	}
-
+	
 }

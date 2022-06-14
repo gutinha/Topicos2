@@ -161,28 +161,24 @@
 														title="Leia nosso contrato e termos de serviço">Contrato
 															e Termos</a></li>
 												</ul></li>
-											<li><a href="#"
-												title="Veja algumas promoções que separamos"> Promoções
-											</a></li>
 											<h:form
 												rendered="#{templateController.entity == null ? 'true' : 'false'}">
 												<li><a href="/Topicos2/login" title="Área do cliente"
 													class="btn"> Área do Cliente </a></li>
 											</h:form>
-											<h:form
-												rendered="#{templateController.entity == null ? 'false' : 'true'}">
-												<li class="dropdown"><a class="dropdown-toggle"
+												<li class="dropdown"><a class="dropdown-toggle" style="visibility: #{templateController.entity == null ? 'hidden' : 'visible'}"
 													data-bs-toggle="dropdown" role="button" href="#">Olá,
 														#{templateController.entity.nome}</a>
 													<ul class="dropdown-menu" aria-labelledby="user-menu">
 														<li><a class="dropdown-item" href="/Topicos2/perfil">Meu
 																perfil</a></li>
+														<p:commandButton style="color:black;" value="Painel" rendered="#{templateController.entity.perfil.id == 1}" actionListener="#{templateController.redirecionar('/admin/painel')}"></p:commandButton>
+														<p:commandButton style="color:black;" value="Sair" actionListener="#{templateController.encerrarSessao}"/>
 													</ul></li>
 												<li><img
-													style="max-width: 30px; max-height: 30px; border-radius: 50%"
+													style="max-width: 30px; max-height: 30px; border-radius: 50%;visibility: #{templateController.entity == null ? 'hidden' : 'visible'}"
 													class="img-responsive"
 													src="img-usuario?nome=#{templateController.entity.id}.png" /></li>
-											</h:form>
 										</ul>
 										<button class="menu-btn d-xl-none">
 											<i class="fas fa-times"></i>

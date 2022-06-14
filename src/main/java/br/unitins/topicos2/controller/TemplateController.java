@@ -31,6 +31,11 @@ public class TemplateController extends Controller<Usuario> implements Serializa
 		return entity;
 	}
 	
+	public void encerrarSessao() {
+		Session.getInstance().invalidateSession();
+		Util.redirect("/index");
+	}
+	
 	public String findNomeById() {
 		String nome = null;
 		UsuarioRepository repo = new UsuarioRepository();
