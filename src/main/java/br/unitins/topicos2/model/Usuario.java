@@ -16,10 +16,11 @@ import org.hibernate.annotations.CascadeType;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends DefaultEntity implements Serializable {
 	private static final long serialVersionUID = 512261310652722752L;
-	@Email(message = "Informe um email v√°lido")
-	@NotBlank(message = "N√£o pode ser vazio")
+	@Email(message = "Informe um email v·lido")
+	@NotBlank(message = "N„o pode ser vazio")
 	@Column(length = 150)
 	private String email;
+	@NotBlank(message = "N„o pode ser vazio")
 	@Column(length = 100)
 	private String nome;
 	@OneToOne

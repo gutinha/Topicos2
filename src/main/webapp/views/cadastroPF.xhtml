@@ -57,7 +57,9 @@
 										<h:panelGrid columns="2">
 											<p:outputLabel value="Nome: " />
 											<h:panelGroup>
-												<p:inputText value="#{cadastroController.entity.nome}" required="" requiredMessage="Digite um nome"/>
+												<p:inputText value="#{cadastroController.entity.nome}" required="" requiredMessage="Digite um nome">
+												<p:ajax event="blur" update="messages"></p:ajax>
+												</p:inputText>
 											</h:panelGroup>
 											<p:outputLabel value="Sobrenome: "/>
 											<p:inputText value="#{cadastroController.entity.sobrenome}" required="" requiredMessage="Digite um sobrenome"/>

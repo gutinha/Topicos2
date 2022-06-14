@@ -166,7 +166,8 @@
 												<li><a href="/Topicos2/login" title="Área do cliente"
 													class="btn"> Área do Cliente </a></li>
 											</h:form>
-												<li class="dropdown"><a class="dropdown-toggle" style="visibility: #{templateController.entity == null ? 'hidden' : 'visible'}"
+											<h:form rendered="#{templateController.entity == null ? 'false' : 'true'}">
+												<li class="dropdown"><a class="dropdown-toggle"
 													data-bs-toggle="dropdown" role="button" href="#">Olá,
 														#{templateController.entity.nome}</a>
 													<ul class="dropdown-menu" aria-labelledby="user-menu">
@@ -175,10 +176,8 @@
 														<p:commandButton style="color:black;" value="Painel" rendered="#{templateController.entity.perfil.id == 1}" actionListener="#{templateController.redirecionar('/admin/painel')}"></p:commandButton>
 														<p:commandButton style="color:black;" value="Sair" actionListener="#{templateController.encerrarSessao}"/>
 													</ul></li>
-												<li><img
-													style="max-width: 30px; max-height: 30px; border-radius: 50%;visibility: #{templateController.entity == null ? 'hidden' : 'visible'}"
-													class="img-responsive"
-													src="img-usuario?nome=#{templateController.entity.id}.png" /></li>
+											</h:form>
+											<p:graphicImage class="img-responsive" url="img-usuario?nome=#{templateController.entity.id}.png" style="margin-left:5px;margin-bottom:10px;max-width: 30px; max-height: 30px; border-radius: 50%;" rendered="#{templateController.entity == null ? 'false' : 'true'}"></p:graphicImage>
 										</ul>
 										<button class="menu-btn d-xl-none">
 											<i class="fas fa-times"></i>
