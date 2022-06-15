@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class EsqueceuSenha extends DefaultEntity{
 	private String codigo;
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	private LocalDateTime dataHoraLimite;

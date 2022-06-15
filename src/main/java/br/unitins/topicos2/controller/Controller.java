@@ -63,15 +63,18 @@ public abstract class Controller <T extends DefaultEntity> {
 
 	}
 	
-	public void excluir() {
+	public void excluir(){
 		try {
-			getRepository().remove(getEntity());
+			setEntity(getRepository().save(getEntity()));
 			Util.addInfoMessage("Sucesso", "Exclusão realizada com sucesso.");
 			limpar();
 		} catch (RepositoryException e) {
 			e.printStackTrace();
 			Util.addErrorMessage("Erro!", e.getMessage());
-		}
+		} catch (VersionException e) {
+			e.printStackTrace();
+			Util.addErrorMessage("Erro!", e.getMessage());
+		} 
 	}
 
 	

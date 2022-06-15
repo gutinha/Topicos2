@@ -58,6 +58,16 @@
 		<pattern value="/empresa" />
 		<view-id value="/views/empresa.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="painelAdmin">
+		<pattern value="/admin/painel" />
+		<view-id value="/views/admin/painel.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="gerenciarUsuario">
+		<pattern value="/admin/gerenciarUsuario" />
+		<view-id value="/views/admin/gerenciarUsuario.xhtml" />
+	</url-mapping>
 
 
 </pretty-config>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Usuário</title>
+	<style type="text/css">
+body .ui-dialog {
+	width: 50% !important;
+}
+
+element.style {
+	width: 50% !important;
+}
+</style>
+</h:head>
+<h:body>
+	<h:panelGrid columns="2">
+		<p:outputLabel value="Nome Fantasia: "
+			rendered="#{usuarioModalController.instanceOfPf == false}" />
+		<p:outputLabel value="Nome: "
+			rendered="#{usuarioModalController.instanceOfPf == true}"
+			style="color:white;" />
+		<p:inputText value="#{usuarioModalController.entity.nome}"
+			disabled="true" />
+		<p:outputLabel value="Sobrenome: "
+			rendered="#{usuarioModalController.instanceOfPf == true}"
+			style="color:white;" />
+		<p:inputText value="#{usuarioModalController.entity.sobrenome}"
+			rendered="#{usuarioModalController.instanceOfPf == true}"
+			style="color:white;" disabled="true" />
+		<p:outputLabel value="CPF: "
+			rendered="#{usuarioModalController.instanceOfPf == true}"
+			style="color:white;" />
+		<p:inputMask value="#{usuarioModalController.entity.cpf}"
+			rendered="#{usuarioModalController.instanceOfPf == true}"
+			mask="999.999.999-99" placeholder="xxx.xxx.xxx-xx" disabled="true" />
+		<p:outputLabel value="Razão Social: "
+			rendered="#{usuarioModalController.instanceOfPf == false}"
+			style="color:white;" />
+		<p:inputText value="#{usuarioModalController.entity.razaoSocial}"
+			rendered="#{usuarioModalController.instanceOfPf == false}"
+			disabled="true" />
+		<p:outputLabel value="CNPJ: "
+			rendered="#{usuarioModalController.instanceOfPf == false}"
+			style="color:white;" />
+		<p:inputText value="#{usuarioModalController.entity.cnpj}"
+			rendered="#{usuarioModalController.instanceOfPf == false}"
+			disabled="true" />
+		<p:outputLabel value="Telefone: " style="color:white;" />
+		<p:inputMask value="#{usuarioModalController.entity.telefone}"
+			mask="(99) 99999-9999" disabled="true" />
+		<p:outputLabel value="Email: " style="color:white;" />
+		<p:inputText value="#{usuarioModalController.entity.email}"
+			disabled="true" />
+	</h:panelGrid>
+</h:body>
+</html>

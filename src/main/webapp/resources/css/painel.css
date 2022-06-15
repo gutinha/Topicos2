@@ -1,0 +1,148 @@
+p {
+	text-align: left;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.card-deck {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	padding: 5px
+}
+
+@media ( min-width : 576px) {
+	.card-deck {
+		-ms-flex-flow: row wrap;
+		flex-flow: row wrap;
+	}
+}
+
+@media ( min-width : 0) {
+	.card-deck .box-container {
+		flex: 0 0 calc(100% - 10px);
+	}
+}
+
+@media ( min-width : 576px) {
+	.card-deck .box-container {
+		flex: 0 0 calc(50% - 10px);
+	}
+}
+
+@media ( min-width : 768px) {
+	.card-deck .box-container {
+		flex: 0 0 calc(33.3333333333% - 10px);
+	}
+}
+
+.box-container {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #D5D5D5;
+	border-radius: 8px;
+	padding: 15px 15px 15px 20px;
+	position: relative;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	height: 170px;
+	width: 25rem;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
+		rgba(0, 0, 0, 0.12);
+}
+
+.box-container.dev {
+	height: 190px;
+}
+
+.box-container .base {
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 8px;
+}
+
+.box-container .base.button-box {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-bottom: 8px;
+	margin-right: 8px;
+}
+
+.box-container a {
+	text-decoration: none;
+}
+
+.box-container:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 10px;
+	content: '';
+	height: 100%;
+	border-radius: 8px 0 0 8px;
+	background-color: #314BB1;
+}
+
+.box-container.dev:before {
+	background-color: #711a1a;
+}
+
+.box-container .titulo {
+	margin: 0;
+	font-size: 15px;
+	padding: 0;
+	line-height: 19px;
+	text-transform: uppercase;
+	font-weight: 600;
+	padding-bottom: 5px;
+}
+
+.box-container .descricao {
+	margin: 0;
+	font-size: 14px;
+	padding: 0;
+	padding-bottom: 8px;
+	font-weight: 400;
+	color: #707070;
+}
+
+.box-container .button-box {
+	text-align: right;
+	padding-top: 20px;
+}
+
+.box-container .link-block {
+	color: #005DFF;
+	display: block;
+	line-height: 24px;
+	margin-top: 5px;
+}
+
+.box-container .btn.prod {
+	font-size: 14px;
+	display: block;
+	padding: 10px 20px;
+	border: 1px solid #D5D5D5;
+	border-radius: 4px;
+	color: #005DFF;
+}
+
+@media ( max-width : 768px) {
+	.box-container .base.button-box {
+		position: relative;
+	}
+	.box-container.dev .base {
+		position: relative;
+	}
+	#myTab li a {
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+}

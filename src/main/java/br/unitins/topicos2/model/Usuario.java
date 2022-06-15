@@ -2,6 +2,7 @@ package br.unitins.topicos2.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -16,14 +17,14 @@ import org.hibernate.annotations.CascadeType;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends DefaultEntity implements Serializable {
 	private static final long serialVersionUID = 512261310652722752L;
-	@Email(message = "Informe um email v·lido")
-	@NotBlank(message = "N„o pode ser vazio")
+	@Email(message = "Informe um email v√°lido")
+	@NotBlank(message = "N√£o pode ser vazio")
 	@Column(length = 150)
 	private String email;
-	@NotBlank(message = "N„o pode ser vazio")
+	@NotBlank(message = "N√£o pode ser vazio")
 	@Column(length = 100)
 	private String nome;
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
@@ -32,6 +33,7 @@ public class Usuario extends DefaultEntity implements Serializable {
 	@Column(length = 30)
 	private String telefone;
 	private Perfil perfil;
+	private boolean excluido;
 
 	public String getNome() {
 		return nome;
@@ -77,6 +79,14 @@ public class Usuario extends DefaultEntity implements Serializable {
 	}
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
+	}
+
+	public boolean isExcluido() {
+		return excluido;
+	}
+
+	public void setExcluido(boolean excluido) {
+		this.excluido = excluido;
 	}
 
 }

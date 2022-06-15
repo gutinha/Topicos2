@@ -76,9 +76,12 @@
 			<p:dialog header="Trocar foto" widgetVar="dlg3" minHeight="100"
 				width="650" showEffect="fade" modal="true" draggable="false">
 				<h:form enctype="multipart/form-data">
-					<p:fileUpload id="fileUpload" listener="#{perfilController.upload}"
-						global="false" mode="advanced" update="fileUpload messages2"
-						label="Selecione uma foto ...">
+					<p:fileUpload id="fileUpload" 
+						listener="#{perfilController.upload}"
+						mode="advanced" 
+						update="fileUpload @form"
+						label="Selecione uma foto ..."
+						global="false">
 					</p:fileUpload>
 					<p:growl id="messages2" showDetail="false" />
 				</h:form>

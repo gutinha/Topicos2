@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Gerenciar Usuário</title>
+	<meta charset="utf-8"></meta>
+</h:head>
+<h:body>
+	<ui:composition template="/views/template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<div class="login-container" style="margin-top:150px;">
+					<p:growl id="growl" showDetail="true" />
+					<p:dataTable id="dataTable" value="#{gerenciarUsuarioController.listUser()}" var="obj"
+						rows="10" paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+						rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+						<p:column headerText="Nome">
+							<p:outputLabel value="#{obj[1]}" />
+						</p:column>
+						<p:column headerText="Email">
+							<p:outputLabel value="#{obj[2]}" />
+						</p:column>
+						<p:column headerText="Perfil">
+							<p:outputLabel value="#{obj[3] == 1 ? 'Admin' : 'Cliente'}" />
+						</p:column>
+						<p:column headerText="Ação">
+						<p:commandButton value="🔍" title="Visualizar"
+										style="margin-left:10px;margin-right:10px;"
+										actionListener="#{gerenciarUsuarioController.view(obj[0])}"/>
+							<p:commandButton value="✎" title="Editar"
+								actionListener="#{gerenciarUsuarioController.alterar}" process="@this"
+								update="@form" />
+								<p:commandButton value="🗑️" title="Excluir" styleClass="ui-button-danger"
+										icon="pi pi-times" style="margin-left:10px;margin-right:10px;"
+										actionListener="#{gerenciarUsuarioController.excluir(obj[0])}"
+										process="@this" update="@form">
+										<p:confirm header="Confirmação"
+											message="Deseja realmente excluir?" icon="pi pi-info-circle" />
+									</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</div>
+			</h:form>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+				responsive="true" width="350">
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no ui-button-flat" />
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" />
+			</p:confirmDialog>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

@@ -16,7 +16,7 @@ public class UsuarioRepository extends Repository<Usuario> {
 	@SuppressWarnings("unchecked")
 	public List<Usuario> findListByEmail(String email) throws RepositoryException {
 		try { 
-			String sql = "SELECT u FROM Usuario u WHERE u.email = :email";
+			String sql = "SELECT u FROM Usuario u WHERE u.email = :email AND u.excluido = false";
 			Query query = getEntityManager().createQuery(sql);
 			query.setParameter("email", "%" + email + "%");
 			return query.getResultList();
@@ -28,7 +28,7 @@ public class UsuarioRepository extends Repository<Usuario> {
 	
 	public Usuario findByEmail(String email) throws RepositoryException {
 		try { 
-			String sql = "SELECT u FROM Usuario u WHERE u.email = :email";
+			String sql = "SELECT u FROM Usuario u WHERE u.email = :email AND u.excluido = false";
 			Query query = getEntityManager().createQuery(sql);
 			query.setParameter("email", email);
 
@@ -40,12 +40,26 @@ public class UsuarioRepository extends Repository<Usuario> {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RepositoryException("Erro ao executar o findByEmail.");
-		}		
+		}	
 	}
 	
+	public List<Usuario> findAllUsers() throws RepositoryException {
+		List<Usuario> lista =null;
+		try {
+			String sql = "SELECT u.id, u.nome, u.email, u.perfil FROM Usuario u WHERE u.excluido = false";
+			Query query = getEntityManager().createNativeQuery(sql);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public Usuario verifyLogin(String email, Usuario usu) throws RepositoryException {
 		try { 
-			String sql = "SELECT u FROM Usuario u WHERE u.email = ?0 and u.senha = ?1";
+			String sql = "SELECT u FROM Usuario u WHERE u.email = ?0 and u.senha = ?1 and u.excluido = false";
 			Query query = getEntityManager().createQuery(sql);
 			query.setParameter(0, email);
 			query.setParameter(1, Util.hash(usu));
@@ -69,7 +83,7 @@ public class UsuarioRepository extends Repository<Usuario> {
 	
 	public String findNomePfById(Integer id) throws RepositoryException {
 		try { 
-			String sql = "SELECT pf.nome FROM Usuario u,PessoaFisica pf WHERE u.id = ?0 AND u.id = pf.id";
+			String sql = "SELECT pf.nome FROM Usuario u,PessoaFisica pf WHERE u.id = ?0 AND u.id = pf.id AND u.excluido = false";
 			Query query = getEntityManager().createNativeQuery(sql);
 			query.setParameter(0, id);
 			return query.getSingleResult().toString();
@@ -85,7 +99,7 @@ public class UsuarioRepository extends Repository<Usuario> {
 	
 	public String findNomePjById(Integer id) throws RepositoryException {
 		try { 
-			String sql = "SELECT pj.nomefantasia FROM Usuario u,PessoaJuridica pj WHERE u.id = ?0 AND u.id = pj.id";
+			String sql = "SELECT pj.nomefantasia FROM Usuario u,PessoaJuridica pj WHERE u.id = ?0 AND u.id = pj.id AND u.excluido = false";
 			Query query = getEntityManager().createNativeQuery(sql);
 			query.setParameter(0, id);
 			return query.getSingleResult().toString();
