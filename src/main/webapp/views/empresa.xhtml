@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>A empresa</title>
+	<meta charset="utf-8" />
+	<meta name="description" content="Saiba mais sobre nossa empresa." />
+	<meta name="viewport" content="width=device-width" />
+</h:head>
+<h:body>
+	<ui:composition template="./template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<div class="login-container">
+					<p:growl id="growl" showDetail="true" />
+					<section class="title wave-bg-bot" style="margin-top: 150px;">
+						<div class="container">
+							<div class="row justify-content-between align-items-center">
+								<div class="col-12 col-xl-6 col-lg-5">
+									<nav aria-label="breadcrumb">
+										<ol class="breadcrumb">
+											<li class="breadcrumb-item"><a href="/Topicos2/index">Home</a></li>
+											<li class="breadcrumb-item">Sobre nós</li>
+											<li class="breadcrumb-item active" aria-current="page">A
+												Empresa</li>
+										</ol>
+									</nav>
+									<h1>Sobre a HypeHost</h1>
+								</div>
+								<div class="col-12 col-xl-6 col-lg-7">
+									<div class="row planos">
+										<div class=" plano-tab">
+												<i class="far fa-address-card"></i>
+											<h3>Sobre a HeavyHost</h3>
+										</div>
+										<a href="/Topicos2/empresa"
+											class="col-lg-3 col-md-3 col-sm-6 col-6">
+											<div class=" plano-tab">
+													<i class="far fa-building"></i>
+												<h3>Sobre nosso datacenter</h3>
+											</div>
+										</a> <a href="sobre-anti-ddos.html"
+											class="col-lg-3 col-md-3 col-sm-6 col-6">
+											<div class=" plano-tab">
+													<i class="fas fa-shield-alt"></i>
+												<h3>Sobre nosso Anti-DDoS</h3>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="porque pd" style="color:white;">
+						<div class="container">
+							<div class="row">
+								<div class="col-12 col-md-5 text-center">
+										<img src="https://svgshare.com/i/iKu.svg" alt="HypeHost"
+											width="526" height="350" />
+								</div>
+								<div class="col-12 col-md-7">
+									<h2>
+										Quem somos? De onde viemos?<br />Para onde vamos?
+									</h2>
+									<h3>Calma... Vamos te contar um pouco da nossa história</h3>
+									<h3 class="pt-4">Quem somos?</h3>
+									<p>Somos uma empresa que oferece infraestrutura como um
+										serviço (IaaS), no nosso portifólio temos em destaque os
+										planos Cloud e VPS, soluções Anti-DDoS e registro de domínio.</p>
+									<p>Nós criamos soluções para que pessoas e empresas possam
+										viabilizar suas operações na internet, com soluções
+										personalizadas e direcionadas para cada setor ou cliente com o
+										menor custo possível.</p>
+								</div>
+							</div>
+							<div class="row pt-5 justify-content-center">
+								<div class="col-12 col-md-10">
+									<h3>De onde viemos?</h3>
+									<p>O projeto HypeHost teve início no primeiro semestre de
+										2022, na matéria de topicos 2.</p>
+									<p>No começo focamos nossos olhos em soluções Anti-DDoS
+										oferecidas em servidores VPS, com alvo em proteção para jogos
+										online que sofriam constantemente com ataques de negação de
+										serviço.</p>
+									<p>A empresa nasceu após a criação de uma solução Anti-DDoS
+										para servidores de SA-MP onde conseguimos resolver falhas que
+										eram exploradas para ataques DDoS no jogo, mas com o tempo
+										fomos recebendo novos clientes de outros jogos com problemas
+										parecidos, e desde então nunca paramos de criar soluções
+										dedicadas para os jogos que hospedamos.</p>
+									<p>Com o passar do tempo vimos novas oportunidades de
+										negócio, trouxemos novos planos e ofertas e com isto abrimos o
+										nosso mercado para vários leques do ramo de infraestrutura na
+										nuvem e soluções dedicadas a negócios.</p>
+								</div>
+							</div>
+							<div class="row pt-5">
+								<div class="col-12 col-md-6 text-center">
+									<figure>
+										<img src="https://svgshare.com/i/iJw.svg" alt="HypeHost" width="600"
+											height="300" />
+									</figure>
+								</div>
+								<div class="col-12 col-md-6">
+									<h3>Para onde vamos?</h3>
+									<p>Sempre buscamos aprimorar nossa prestação de serviços,
+										não podemos prever o futuro mas podemos atuar no presente.</p>
+									<p>E no presente estamos trabalhando com base no feedback
+										apresentado pelos nossos clientes, acreditamos que entender e
+										oferecer soluções baseadas na necessidade dos clientes é a
+										melhor forma de garantir bons resultados.</p>
+									<p>
+										Se tratando de números temos mais de <strong>30 mil
+											servidores instalados</strong> desde 2016, em cada instalação ouvimos
+										a necessidade do cliente para oferecer uma experiência única.
+									</p>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="icones2">
+						<div class="container" style="color:white;">
+							<div class="row">
+								<div class="col-12 col-lg-12 col-xl-12 mb-2">
+									<h2 class="text-center">O que está agregado na HypeHost?
+									</h2>
+								</div>
+								<div class="col-lg-4 col-md-6 col-12 icon-side">
+									<i class="fas fa-headset"></i>
+									<div>
+										<h3>Suporte amigável</h3>
+										<p>
+											Conte com nosso incrível time de atendimento especializado
+											para resolução de problemas em minutos, também disponível via
+											<a href="https://api.whatsapp.com/send?phone=5531992963981"
+												title="Chamar no WhatsApp"><strong>WhatsApp</strong></a>.
+										</p>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 col-12 icon-side">
+									<i class="fas fa-money-check-alt"></i>
+									<div>
+										<h3>Preços acessíveis</h3>
+										<p>Levando em consideração todos os benefícios que
+											oferecemos aos nossos clientes e parceiros os nossos preços
+											são realmente acessíveis.</p>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 col-12 icon-side">
+									<i class="fas fa-laptop-code"></i>
+									<div>
+										<h3>Fácil gestão</h3>
+										<p>Facilitar o gerenciamento de um serviço de
+											infraestrutura deve ser prioridade, todos nossos recursos são
+											de fácil gestão e com suporte 24h.</p>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 col-12 icon-side">
+									<i class="fab fa-whatsapp"></i>
+									<div>
+										<h3>Notificações via WhatsApp</h3>
+										<p>Entendemos que nem sempre te resta tempo para ler
+											emails, e pensando nisto oferecemos o envio das notificações
+											mais importantes via WhatsApp.</p>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 col-12 icon-side">
+									<i class="fas fa-rocket"></i>
+									<div>
+										<h3>Alta performance</h3>
+										<p>Pensamos nossa rede em um ambiente de alta performance,
+											e por isto você sempre poderá contar com as melhores marcas
+											de hardware do mercado.</p>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 col-12 icon-side">
+									<i class="fas fa-shield-alt"></i>
+									<div>
+										<h3>Anti-DDoS grátis para todos</h3>
+										<p>A segurança e estabilidade de um serviço online é
+											prioridade, por isto oferecemos em todos os planos do nosso
+											site proteção DDoS sem custo adicional.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</h:form>
+
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

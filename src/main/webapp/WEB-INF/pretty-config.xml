@@ -53,6 +53,11 @@
 		<pattern value="/perfil" />
 		<view-id value="/views/perfil.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="empresa">
+		<pattern value="/empresa" />
+		<view-id value="/views/empresa.xhtml" />
+	</url-mapping>
 
 
 </pretty-config>

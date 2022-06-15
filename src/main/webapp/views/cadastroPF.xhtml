@@ -64,18 +64,21 @@
 											<p:outputLabel value="Sobrenome: "/>
 											<p:inputText value="#{cadastroController.entity.sobrenome}" required="" requiredMessage="Digite um sobrenome"/>
 											<p:outputLabel value="CPF: " />
-											<p:inputText value="#{cadastroController.entity.cpf}">
+											<p:inputMask value="#{cadastroController.entity.cpf}" mask="999.999.999-99" placeholder="xxx.xxx.xxx-xx">
 											<p:ajax event="blur" update="messages"></p:ajax>
-											</p:inputText>
+											</p:inputMask>
 											<p:outputLabel value="Email: " />
 											<p:inputText value="#{cadastroController.entity.email}">
 											<p:ajax event="blur" update="messages"></p:ajax>
 											</p:inputText>
 											<p:outputLabel value="Telefone: " />
-											<p:inputText value="#{cadastroController.entity.telefone}" />
+											<p:inputMask value="#{cadastroController.entity.telefone}" mask="(99) 99999-9999"/>
 											<p:outputLabel value="Senha: " />
 											<p:password id="toggle"
-												value="#{cadastroController.entity.senha}" toggleMask="true"
+												value="#{cadastroController.entity.senha}" toggleMask="true" 
+												promptLabel="Informe uma senha forte" 
+												weakLabel="Senha fraca"
+												strongLabel="Senha forte"
 												redisplay="true" feedback="true"/>
 										</h:panelGrid>
 									</div>

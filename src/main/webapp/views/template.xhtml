@@ -147,7 +147,7 @@
 												data-bs-toggle="dropdown" aria-expanded="false"> Sobre
 													nós </a>
 												<ul class="dropdown-menu" aria-labelledby="empresa-menu">
-													<li><a class="dropdown-item" href="#"
+													<li><a class="dropdown-item" href="/Topicos2/empresa"
 														title="Saiba mais sobre nossa empresa">A Empresa</a></li>
 													<li><a class="dropdown-item" href="#"
 														title="Conheça nossos datacenters">O Datacenter</a></li>
@@ -166,8 +166,7 @@
 												<li><a href="/Topicos2/login" title="Área do cliente"
 													class="btn"> Área do Cliente </a></li>
 											</h:form>
-											<h:form rendered="#{templateController.entity == null ? 'false' : 'true'}">
-												<li class="dropdown"><a class="dropdown-toggle"
+												<li class="dropdown"><a class="dropdown-toggle" style="visibility: #{templateController.entity == null ? 'hidden' : 'visible'}"
 													data-bs-toggle="dropdown" role="button" href="#">Olá,
 														#{templateController.entity.nome}</a>
 													<ul class="dropdown-menu" aria-labelledby="user-menu">
@@ -176,7 +175,6 @@
 														<p:commandButton style="color:black;" value="Painel" rendered="#{templateController.entity.perfil.id == 1}" actionListener="#{templateController.redirecionar('/admin/painel')}"></p:commandButton>
 														<p:commandButton style="color:black;" value="Sair" actionListener="#{templateController.encerrarSessao}"/>
 													</ul></li>
-											</h:form>
 											<p:graphicImage class="img-responsive" url="img-usuario?nome=#{templateController.entity.id}.png" style="margin-left:5px;margin-bottom:10px;max-width: 30px; max-height: 30px; border-radius: 50%;" rendered="#{templateController.entity == null ? 'false' : 'true'}"></p:graphicImage>
 										</ul>
 										<button class="menu-btn d-xl-none">
@@ -201,7 +199,7 @@
 				<ui:insert name="conteudo">
 				</ui:insert>
 			</div>
-			<div class="footer">
+			<div class="footer" style="margin-top:24px;">
 				<footer>
 					<div class="container">
 						<div class="row">
@@ -222,12 +220,6 @@
 									<li><a href="formas-de-pagamento.html"
 										title="Métodos de pagamento disponíveis"> Formas de
 											Pagamento </a></li>
-									<li><a href="planos-revenda.html"
-										title="Revenda de hospedagem"> Revenda de Serviços </a></li>
-									<li><a href="faq.html#licencas"
-										title="Licenças de software"> Licenças de Software </a></li>
-									<li><a href="faq.html#envio-de-email"
-										title="Envio de e-mail"> Envio de E-mail </a></li>
 								</ul>
 							</div>
 							<div class="col-lg-3 col-sm-4 col-12 d-none d-sm-block">

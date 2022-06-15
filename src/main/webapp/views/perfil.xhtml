@@ -14,16 +14,17 @@
 		<ui:define name="conteudo">
 			<h:form>
 				<div class="login-container">
-					<p:growl id="growl" showDetail="true" />
-					<p:messages id="messages" showDetail="true">
-						<p:autoUpdate />
-					</p:messages>
 					<center>
+						<p:growl id="growl" showDetail="true" />
+						<p:messages id="messages" showDetail="false">
+							<p:autoUpdate />
+						</p:messages>
 						<h:panelGrid columns="2" style="margin-top:100px;">
 							<f:facet name="header">
 								<img class="img-responsive" id="img"
 									style="max-width: 130px !important; max-height: 130px !important; border-radius: 50%; margin-left: 100px;"
-									src="img-usuario?nome=#{perfilController.entity.id}.png" onclick="PF('dlg3').show()"/>
+									src="img-usuario?nome=#{perfilController.entity.id}.png"
+									onclick="PF('dlg3').show()" />
 							</f:facet>
 							<p:outputLabel value="Nome Fantasia: "
 								rendered="#{perfilController.instanceOfPf == false}" />
@@ -40,8 +41,9 @@
 							<p:outputLabel value="CPF: "
 								rendered="#{perfilController.instanceOfPf == true}"
 								style="color:white;" />
-							<p:inputText value="#{perfilController.entity.cpf}"
-								rendered="#{perfilController.instanceOfPf == true}" />
+							<p:inputMask value="#{perfilController.entity.cpf}"
+								rendered="#{perfilController.instanceOfPf == true}"
+								mask="999.999.999-99" placeholder="xxx.xxx.xxx-xx" />
 							<p:outputLabel value="Razão Social: "
 								rendered="#{perfilController.instanceOfPf == false}"
 								style="color:white;" />
@@ -53,13 +55,15 @@
 							<p:inputText value="#{perfilController.entity.cnpj}"
 								rendered="#{perfilController.instanceOfPf == false}" />
 							<p:outputLabel value="Telefone: " style="color:white;" />
-							<p:inputText value="#{perfilController.entity.telefone}" />
+							<p:inputMask value="#{perfilController.entity.telefone}"
+								mask="(99) 99999-9999" />
 							<p:outputLabel value="Email: " style="color:white;" />
-							<p:inputText value="#{perfilController.entity.email}" disabled=""/>
+							<p:inputText value="#{perfilController.entity.email}"
+								disabled="true" />
 						</h:panelGrid>
 						<center style="margin-top: 25px;">
-							<p:commandButton value="Alterar senha" icon="pi pi-external-link" actionListener="#{perfilController.abrirTrocaSenhaListing}"
-								/>
+							<p:commandButton value="Alterar senha" icon="pi pi-external-link"
+								actionListener="#{perfilController.abrirTrocaSenhaListing}" />
 							<p:commandButton value="Salvar" styleClass="ui-button-outlined"
 								style="margin-left:10px;margin-right:10px;"
 								actionListener="#{perfilController.alterar}" update="@form"
@@ -68,19 +72,16 @@
 					</center>
 				</div>
 			</h:form>
-			
+
 			<p:dialog header="Trocar foto" widgetVar="dlg3" minHeight="100"
-					width="650" showEffect="fade" modal="true" draggable="false">
-						<h:form enctype="multipart/form-data">
-							<p:fileUpload id="fileUpload"
-								listener="#{perfilController.upload}"
-								global="false"
-								mode="advanced"
-								update="fileUpload messages2" 
-								label="Selecione uma foto ...">
-							</p:fileUpload>
-							<p:growl id="messages2" showDetail="false" />
-						</h:form>
+				width="650" showEffect="fade" modal="true" draggable="false">
+				<h:form enctype="multipart/form-data">
+					<p:fileUpload id="fileUpload" listener="#{perfilController.upload}"
+						global="false" mode="advanced" update="fileUpload messages2"
+						label="Selecione uma foto ...">
+					</p:fileUpload>
+					<p:growl id="messages2" showDetail="false" />
+				</h:form>
 			</p:dialog>
 
 		</ui:define>
