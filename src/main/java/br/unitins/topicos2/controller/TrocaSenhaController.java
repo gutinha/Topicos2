@@ -34,6 +34,7 @@ public class TrocaSenhaController extends Controller<Usuario> implements Seriali
 		if(getEntity().getSenha().equals(getSenhaAtualHash())) {
 			getEntity().setSenha(Util.hash(getEntity(), getNovaSenha()));
 			alterar();
+			Session.getInstance().set("usuarioLogado", getEntity());
 		} else {
 			System.out.print(Util.hash(getEntity()));
 			Util.addErrorMessage("Erro!", "Senha atual incorreta");

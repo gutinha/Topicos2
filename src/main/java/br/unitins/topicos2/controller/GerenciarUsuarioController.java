@@ -8,8 +8,14 @@ import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.primefaces.event.SelectEvent;
+
+import br.unitins.topicos2.controller.listing.EditUserModal;
 import br.unitins.topicos2.controller.listing.EstadoListing;
 import br.unitins.topicos2.controller.listing.UsuarioModal;
+import br.unitins.topicos2.model.Cidade;
+import br.unitins.topicos2.model.PessoaFisica;
+import br.unitins.topicos2.model.PessoaJuridica;
 import br.unitins.topicos2.model.Usuario;
 import br.unitins.topicos2.repository.UsuarioRepository;
 import br.unitins.topicos2.utils.RepositoryException;
@@ -61,6 +67,15 @@ public class GerenciarUsuarioController extends Controller<Usuario> implements S
 		UsuarioModal modal = new UsuarioModal();
 		modal.open();
 	}
+	public void edit(Integer id) {
+		try {
+			Session.getInstance().set("editUser", repo.findById(id));
+			Util.redirect("/admin/editUser");
+		} catch (RepositoryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public void excluir(Integer id) {
 		
@@ -82,4 +97,5 @@ public class GerenciarUsuarioController extends Controller<Usuario> implements S
 	public void setUsers(List<Usuario> users) {
 		this.users = users;
 	}
+	
 }

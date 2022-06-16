@@ -11,14 +11,17 @@
 		<class>br.unitins.topicos2.model.Endereco</class>
 		<class>br.unitins.topicos2.model.EsqueceuSenha</class>
 		<class>br.unitins.topicos2.model.Estado</class>
+		<class>br.unitins.topicos2.model.ItemVenda</class>
 		<class>br.unitins.topicos2.model.MeioPagamento</class>
 		<class>br.unitins.topicos2.model.Pagamento</class>
 		<class>br.unitins.topicos2.model.Pais</class>
 		<class>br.unitins.topicos2.model.PessoaFisica</class>
 		<class>br.unitins.topicos2.model.PessoaJuridica</class>
+		<class>br.unitins.topicos2.model.Produto</class>
 		<class>br.unitins.topicos2.model.Servidor</class>
 		<class>br.unitins.topicos2.model.ServidorVM</class>
 	<class>br.unitins.topicos2.model.Usuario</class>
+	<class>br.unitins.topicos2.model.Venda</class>
 
 		<properties>
 				<!-- DB Driver -->

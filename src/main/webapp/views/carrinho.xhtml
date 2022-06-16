@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Login</title>
+	<meta charset="utf-8"></meta>
+</h:head>
+<h:body>
+	<ui:composition template="./template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+			<center>
+				<div class="login-container" style="margin-top:124px;margin-left:15px;">
+					<p:growl id="growl" showDetail="true" />
+					<p:outputLabel style="font-size:36px;color:white;" value="Configuração de #{carrinhoController.instanceOfProduto == true ? 'Domínio' : 'Hospedagem'}"></p:outputLabel>
+					<br/><p:outputLabel rendered="#{carrinhoController.instanceOfProduto == true}" style="color:white;" value="Por favor, revise suas seleções de nomes de domínio e quaisquer addons que estão disponíveis para eles."/>
+					<div class="sub-heading" style="margin-left:50px;">
+						<p:outputLabel rendered="#{carrinhoController.instanceOfProduto == true}" class="primary-bg-color" style="color:red;margin-bottom:5px;" value="#{carrinhoController.entity.itemVenda.produto.dominio}"></p:outputLabel>
+					</div>
+					<div class="sub-heading" style="margin-left:50px;">
+						<p:outputLabel rendered="#{carrinhoController.instanceOfProduto == true}" class="primary-bg-color" style="color:blue;font-size:20px;" value="NameServers"></p:outputLabel>
+					</div>
+					<p:outputLabel rendered="#{carrinhoController.instanceOfProduto == true}" style="color:white;" value="Se você deseja utilizar outro nameserver, faça a alteração abaixo. Por padrão, os domínios são registrados com nossos nameservers."></p:outputLabel>
+					<div class="row" style="margin-left:520px;">
+						<div class="col-sm-3">
+							<div class="form-group">
+								<p:outputLabel rendered="#{carrinhoController.instanceOfProduto == true}" style="color:white;" value="Nameserver 1"></p:outputLabel>
+								<p:inputText class="form-control" rendered="#{carrinhoController.instanceOfProduto == true}" value="#{carrinhoController.entity.itemVenda.produto.nameServer1}"></p:inputText>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="form-group">
+								<p:outputLabel rendered="#{carrinhoController.instanceOfProduto == true}" style="color:white;" value="Nameserver 2"></p:outputLabel>
+								<p:inputText class="form-control" rendered="#{carrinhoController.instanceOfProduto == true}" value="#{carrinhoController.entity.itemVenda.produto.nameServer2}"></p:inputText>
+							</div>
+						</div>
+					</div>
+					<p:commandButton style="margin-top:10px;margin-bottom:250px;" value="Prosseguir" update="@form" process="@form" actionListener="#{carrinhoController.finalizar}"></p:commandButton>
+				</div>
+			</center>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

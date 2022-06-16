@@ -68,6 +68,26 @@
 		<pattern value="/admin/gerenciarUsuario" />
 		<view-id value="/views/admin/gerenciarUsuario.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="editUser">
+		<pattern value="/admin/editUser" />
+		<view-id value="/views/admin/editUser.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="registroDominio">
+		<pattern value="/registroDominio" />
+		<view-id value="/views/registroDominio.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="carrinho">
+		<pattern value="/carrinho" />
+		<view-id value="/views/carrinho.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="finalizarCompra">
+		<pattern value="/finalizarCompra" />
+		<view-id value="/views/finalizarCompra.xhtml" />
+	</url-mapping>
 
 
 </pretty-config>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Login</title>
+	<meta charset="utf-8"></meta>
+</h:head>
+<h:body>
+	<ui:composition template="./template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+			<center>
+				<div class="login-container" style="margin-top:124px;margin-left:15px;margin-bottom:100px;">
+					<p:growl id="growl" showDetail="true" />
+					<div class="cart-body">
+						<div class="header-lined">
+							<p:outputLabel style="font-size:36px;color:white;" value="Rever Pedido"></p:outputLabel>
+						</div>
+						<div class="row">
+							<div class="secondary-cart-body">
+								<div class="view-cart-items-header">
+									<div class="row">
+										<div class="col-sm-7 col-xs-7 col-7" style="color:white;">Produtos/Opções</div>
+										<div class="col-sm-4 col-xs-5 col-5 text-right" style="color:white;">Preço/Ciclo</div>
+									</div>
+								</div>
+								<div class="view-cart-items">
+									<div class="item">
+										<div class="row">
+											<div class="col-sm-7" style="float:left;">
+												<p:outputLabel style="color:white;" rendered="#{finalizarCompraController.entity != null}" value="#{finalizarCompraController.instanceOfProduto == true ? 'Registro de Domínio' : 'VM'}"></p:outputLabel>
+												<br/><p:outputLabel style="color:#03fcf0;font-size:.8em;" rendered="#{finalizarCompraController.instanceOfProduto == true}" class="item-domain" value="#{finalizarCompraController.entity.itemVenda.produto.dominio}"></p:outputLabel>
+											</div>
+											<div class="col-sm-4 item-price" style="">
+													<p:outputLabel style="color:white;" value="R$ #{finalizarCompraController.formatPrice()}"></p:outputLabel>
+											</div>
+											<div class="col-sm-1 hidden-xs d-none d-sm-block">
+												<p:commandButton actionListener="#{finalizarCompraController.excluirCarrinho}" title="Excluir" value="X"></p:commandButton>
+											</div>
+										</div>
+									</div>
+								</div>
+								<p:commandButton style="background-color:green;border:green;" value="Finalizar Compra" update="growl" actionListener="#{finalizarCompraController.comprar}"></p:commandButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</center>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

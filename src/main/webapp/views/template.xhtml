@@ -176,7 +176,8 @@
 														<p:commandButton style="color:black;" value="Painel" rendered="#{templateController.entity.perfil.id == 1}" actionListener="#{templateController.redirecionar('/admin/painel')}"></p:commandButton>
 														<p:commandButton style="color:black;" value="Sair" actionListener="#{templateController.encerrarSessao}"/>
 													</ul></li>
-											<p:graphicImage class="img-responsive" url="img-usuario?nome=#{templateController.entity.id}.png" style="margin-left:5px;margin-bottom:10px;max-width: 30px; max-height: 30px; border-radius: 50%;" rendered="#{templateController.entity == null ? 'false' : 'true'}"></p:graphicImage>
+											<p:commandButton icon="pi pi-shopping-cart" actionListener="#{templateController.redirecionar('/carrinho')}"></p:commandButton>
+											<p:graphicImage class="img-responsive" url="/img-usuario?nome=#{templateController.entity.id}.png" style="margin-left:5px;margin-bottom:10px;max-width: 30px; max-height: 30px; border-radius: 50%;" rendered="#{templateController.entity == null ? 'false' : 'true'}"></p:graphicImage>
 										</ul>
 										<button class="menu-btn d-xl-none">
 											<i class="fas fa-times"></i>

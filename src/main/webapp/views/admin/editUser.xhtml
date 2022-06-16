@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1993/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Editar Usuário</title>
+	<meta charset="utf-8"></meta>
+</h:head>
+<h:body>
+	<ui:composition template="/views/template.xhtml">
+		<ui:define name="conteudo">
+			<center>
+				<h:form>
+					<p:growl id="growl" showDetail="true" />
+					<h:panelGrid columns="2"
+						style="margin-top:120px;margin-bottom:20px;" id="panelGrid">
+						<p:outputLabel value="Nome Fantasia: "
+							rendered="#{editUserController.instanceOfPf == false}" />
+						<p:outputLabel value="Nome: "
+							rendered="#{editUserController.instanceOfPf == true}"
+							style="color:white;" />
+						<p:inputText value="#{editUserController.entity.nome}">
+							<p:ajax event="blur" update="growl"></p:ajax>
+						</p:inputText>
+						<p:outputLabel value="Sobrenome: "
+							rendered="#{editUserController.instanceOfPf == true}"
+							style="color:white;" />
+						<p:inputText value="#{editUserController.entity.sobrenome}"
+							rendered="#{editUserController.instanceOfPf == true}"
+							style="color:white;">
+							<p:ajax event="blur" update="growl"></p:ajax>
+						</p:inputText>
+						<p:outputLabel value="CPF: "
+							rendered="#{editUserController.instanceOfPf == true}"
+							style="color:white;" />
+						<p:inputMask value="#{editUserController.entity.cpf}"
+							rendered="#{editUserController.instanceOfPf == true}"
+							mask="999.999.999-99" placeholder="xxx.xxx.xxx-xx">
+							<p:ajax event="blur" update="growl"></p:ajax>
+						</p:inputMask>
+						<p:outputLabel value="Razão Social: "
+							rendered="#{editUserController.instanceOfPf == false}"
+							style="color:white;" />
+						<p:inputText value="#{editUserController.entity.razaoSocial}"
+							rendered="#{editUserController.instanceOfPf == false}">
+							<p:ajax event="blur" update="growl"></p:ajax>
+						</p:inputText>
+						<p:outputLabel value="CNPJ: "
+							rendered="#{editUserController.instanceOfPf == false}"
+							style="color:white;" />
+						<p:inputText value="#{editUserController.entity.cnpj}"
+							rendered="#{editUserController.instanceOfPf == false}">
+							<p:ajax event="blur" update="growl"></p:ajax>
+						</p:inputText>
+						<p:outputLabel value="Telefone: " style="color:white;" />
+						<p:inputMask value="#{editUserController.entity.telefone}"
+							mask="(99) 99999-9999">
+							<p:ajax event="blur" update="growl"></p:ajax>
+						</p:inputMask>
+						<p:outputLabel value="Email: " style="color:white;" />
+						<p:inputText value="#{editUserController.entity.email}"
+							disabled="true">
+							<p:ajax event="blur" update="growl"></p:ajax>
+						</p:inputText>
+					</h:panelGrid>
+					<p:commandButton value="✎" title="Editar"
+						actionListener="#{editUserController.alterar}" process="@form"
+						update="@form" />
+					<p:commandButton value="Voltar" style="margin-left:10px;"
+						onclick="history.go(-1);"></p:commandButton>
+				</h:form>
+			</center>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

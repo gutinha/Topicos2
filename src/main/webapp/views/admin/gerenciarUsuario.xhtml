@@ -13,9 +13,10 @@
 	<ui:composition template="/views/template.xhtml">
 		<ui:define name="conteudo">
 			<h:form>
-				<div class="login-container" style="margin-top:150px;">
+				<div class="login-container" style="margin-top: 150px;">
 					<p:growl id="growl" showDetail="true" />
-					<p:dataTable id="dataTable" value="#{gerenciarUsuarioController.listUser()}" var="obj"
+					<p:dataTable id="dataTable"
+						value="#{gerenciarUsuarioController.listUser()}" var="obj"
 						rows="10" paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
@@ -30,19 +31,20 @@
 							<p:outputLabel value="#{obj[3] == 1 ? 'Admin' : 'Cliente'}" />
 						</p:column>
 						<p:column headerText="Ação">
-						<p:commandButton value="🔍" title="Visualizar"
-										style="margin-left:10px;margin-right:10px;"
-										actionListener="#{gerenciarUsuarioController.view(obj[0])}"/>
+							<p:commandButton value="🔍" title="Visualizar"
+								style="margin-left:10px;margin-right:10px;"
+								actionListener="#{gerenciarUsuarioController.view(obj[0])}" />
 							<p:commandButton value="✎" title="Editar"
-								actionListener="#{gerenciarUsuarioController.alterar}" process="@this"
-								update="@form" />
-								<p:commandButton value="🗑️" title="Excluir" styleClass="ui-button-danger"
-										icon="pi pi-times" style="margin-left:10px;margin-right:10px;"
-										actionListener="#{gerenciarUsuarioController.excluir(obj[0])}"
-										process="@this" update="@form">
-										<p:confirm header="Confirmação"
-											message="Deseja realmente excluir?" icon="pi pi-info-circle" />
-									</p:commandButton>
+								actionListener="#{gerenciarUsuarioController.edit(obj[0])}"	>
+								</p:commandButton>
+							<p:commandButton value="🗑️" title="Excluir"
+								styleClass="ui-button-danger" icon="pi pi-times"
+								style="margin-left:10px;margin-right:10px;"
+								actionListener="#{gerenciarUsuarioController.excluir(obj[0])}"
+								process="@this" update="@form">
+								<p:confirm header="Confirmação"
+									message="Deseja realmente excluir?" icon="pi pi-info-circle" />
+							</p:commandButton>
 						</p:column>
 					</p:dataTable>
 				</div>

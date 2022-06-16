@@ -23,6 +23,10 @@ public class TemplateController extends Controller<Usuario> implements Serializa
 	public void redirecionar(String pagina) {
 		Util.redirect(pagina);
 	}
+	
+	public String formatPrice(Double price) {
+		 return Util.formatPrice(price);
+	}
 
 	@Override
 	public Usuario getEntity() {

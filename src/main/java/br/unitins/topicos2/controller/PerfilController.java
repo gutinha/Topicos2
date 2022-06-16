@@ -20,7 +20,7 @@ import br.unitins.topicos2.utils.Util;
 @Named
 @ViewScoped
 public class PerfilController extends Controller<Usuario> implements Serializable {
-	private static final long serialVersionUID = -6192990699589999580L;
+	private static final long serialVersionUID = 3965694209038185792L;
 	private InputStream fotoInputStream = null;
 
 	public PerfilController() {
@@ -45,39 +45,10 @@ public class PerfilController extends Controller<Usuario> implements Serializabl
 		} else {
 			Util.addErrorMessage("Erro!", "O tipo da image deve ser png.");
 		}
-
+		alterar();
+		Session.getInstance().set("usuarioLogado", getEntity());
 	}
-
-	@Override
-	public void incluir() {
-		super.salvarSemLimpar();
-
-		// caso exista uma imagem
-		if (getFotoInputStream() != null) {
-			// salvando a imagem
-			if (! Util.saveImageUsuario(getFotoInputStream(), "png", getEntity().getId())) {
-				Util.addErrorMessage("Erro!", "Erro ao salvar. Não foi possível salvar a imagem do usuário.");
-				return;
-			}
-		}
-		limpar();
-	}
-
-	@Override
-	public void alterar() {
-		super.salvarSemLimpar();
-
-		// caso exista uma imagem
-		if (getFotoInputStream() != null) {
-			// salvando a imagem
-			if (! Util.saveImageUsuario(getFotoInputStream(), "png", getEntity().getId())) {
-				Util.addErrorMessage("Erro!", "Erro ao salvar. Não foi possível salvar a imagem do usuário.");
-				return;
-			}
-		}
-		limpar();
-	}
-
+	
 	public InputStream getFotoInputStream() {
 		return fotoInputStream;
 	}
@@ -92,6 +63,22 @@ public class PerfilController extends Controller<Usuario> implements Serializabl
 			setEntity((Usuario) Session.getInstance().get("usuarioLogado"));
 		}
 		return entity;
+	}
+	
+	@Override
+	public void alterar() {
+		super.salvarSemLimpar();
+
+		// caso exista uma imagem
+		if (getFotoInputStream() != null) {
+			// salvando a imagem
+			if (! Util.saveImageUsuario(getFotoInputStream(), "png", getEntity().getId())) {
+				Util.addErrorMessage("Erro!", "Erro ao salvar. Não foi possível salvar a imagem do usuário.");
+				return;
+			}
+		}
+		Session.getInstance().set("usuarioLogado", getEntity());
+		limpar();
 	}
 	
 	public void abrirTrocaSenhaListing() {

@@ -7,7 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class ServidorVM extends DefaultEntity implements Serializable{
+public class ServidorVM extends Produto implements Serializable{
 	private static final long serialVersionUID = -1502934287641581680L;
 	
 	private String processador;

@@ -146,3 +146,52 @@ img {
 		padding-right: 8px;
 	}
 }
+
+a, .fa, h1, h2, h3, h4, h5, h6, .panel-primary { color:#094AB2;}
+.panel-primary {  border-color: #094AB2;}
+
+.table > thead.tb-primary > tr > th, .bg-primario{ background-color: #094AB2;}
+
+.table > thead.tb-primary > tr > th
+{
+    border-bottom: 2px solid #094AB2;
+    color: #FFFFFF;
+    vertical-align: bottom;
+}
+
+.txt-red, .txt-red i  {color:#D9534F!important;}
+.txt-red:hover, .txt-red i:hover  {color:#D2322D!important; text-decoration:none!important;}
+
+.fa-white {color:#fff!important;}
+
+.icon-red
+{
+    color: #be0000;
+}
+
+    .icon-red:hover
+    {
+        color: #ff0000;
+    }
+
+.icon-green
+{
+    color: #117901;
+}
+
+    .icon-green:hover
+    {
+        color: #16a300;
+    }
+
+.btn-primary {
+  background-color:#094AB2;
+  border-color:  #00378e;
+  color: #fff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+  background-color: #0241a5;
+  border-color: #00378e;
+  color: #fff;
+}
