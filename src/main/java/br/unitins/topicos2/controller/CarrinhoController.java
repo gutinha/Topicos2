@@ -32,6 +32,12 @@ public class CarrinhoController extends Controller<Venda> implements Serializabl
 		return entity;
 	}
 	
+	public void chama() {
+		if(getEntity().getItemVenda() == null) {
+			Util.redirect("/index");
+		}
+	}
+	
 	public void finalizar() {
 		Session.getInstance().set("carrinho2", getEntity());
 		Util.redirect("/finalizarCompra");

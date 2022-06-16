@@ -13,43 +13,91 @@
 	<ui:composition template="./template.xhtml">
 		<ui:define name="conteudo">
 			<h:form>
-			<center>
-				<div class="login-container" style="margin-top:124px;margin-left:15px;margin-bottom:100px;">
-					<p:growl id="growl" showDetail="true" />
-					<div class="cart-body">
-						<div class="header-lined">
-							<p:outputLabel style="font-size:36px;color:white;" value="Rever Pedido"></p:outputLabel>
-						</div>
-						<div class="row">
-							<div class="secondary-cart-body">
-								<div class="view-cart-items-header">
-									<div class="row">
-										<div class="col-sm-7 col-xs-7 col-7" style="color:white;">Produtos/Opções</div>
-										<div class="col-sm-4 col-xs-5 col-5 text-right" style="color:white;">Preço/Ciclo</div>
-									</div>
-								</div>
-								<div class="view-cart-items">
-									<div class="item">
+				<center>
+					<div class="login-container"
+						style="margin-top: 124px; margin-left: 15px; margin-bottom: 100px;">
+						<p:growl id="growl" showDetail="true" />
+						<f:metadata>
+							<f:event type="preRenderView" listener="#{finalizarCompraController.chama}" />
+						</f:metadata>
+						<div class="cart-body">
+							<div class="header-lined">
+								<p:outputLabel style="font-size:36px;color:white;"
+									value="Rever Pedido"></p:outputLabel>
+							</div>
+							<div class="row">
+								<div class="secondary-cart-body">
+									<div class="view-cart-items-header">
 										<div class="row">
-											<div class="col-sm-7" style="float:left;">
-												<p:outputLabel style="color:white;" rendered="#{finalizarCompraController.entity != null}" value="#{finalizarCompraController.instanceOfProduto == true ? 'Registro de Domínio' : 'VM'}"></p:outputLabel>
-												<br/><p:outputLabel style="color:#03fcf0;font-size:.8em;" rendered="#{finalizarCompraController.instanceOfProduto == true}" class="item-domain" value="#{finalizarCompraController.entity.itemVenda.produto.dominio}"></p:outputLabel>
-											</div>
-											<div class="col-sm-4 item-price" style="">
-													<p:outputLabel style="color:white;" value="R$ #{finalizarCompraController.formatPrice()}"></p:outputLabel>
-											</div>
-											<div class="col-sm-1 hidden-xs d-none d-sm-block">
-												<p:commandButton actionListener="#{finalizarCompraController.excluirCarrinho}" title="Excluir" value="X"></p:commandButton>
+											<div class="col-sm-7 col-xs-7 col-7" style="color: white;">Produtos/Opções</div>
+											<div class="col-sm-4 col-xs-5 col-5 text-right"
+												style="color: white;">Preço/Ciclo</div>
+										</div>
+									</div>
+									<div class="view-cart-items">
+										<div class="item">
+											<div class="row">
+												<div class="col-sm-7" style="float: left;">
+													<p:outputLabel style="color:white;"
+														rendered="#{finalizarCompraController.entity != null}"
+														value="#{finalizarCompraController.instanceOfProduto == true ? 'Registro de Domínio' : 'VM'}"></p:outputLabel>
+													<br />
+													<p:outputLabel style="color:#03fcf0;font-size:.8em;"
+														rendered="#{finalizarCompraController.instanceOfProduto == true}"
+														class="item-domain"
+														value="#{finalizarCompraController.entity.itemVenda.produto.dominio}"></p:outputLabel>
+												</div>
+												<div class="col-sm-4 item-price" style="">
+													<p:outputLabel style="color:white;"
+														value="R$ #{finalizarCompraController.formatPrice()}"></p:outputLabel>
+												</div>
+												<div class="col-sm-1 hidden-xs d-none d-sm-block">
+													<p:commandButton
+														actionListener="#{finalizarCompraController.excluirCarrinho}"
+														title="Excluir" value="X" update="@form"></p:commandButton>
+												</div>
 											</div>
 										</div>
 									</div>
+									<p:selectOneRadio id="tipoPagamento" style="color:white;"
+										value="#{finalizarCompraController.tipoPagamento}"
+										unselectable="true">
+										<f:selectItem itemLabel="Pix" itemValue="pix" />
+										<f:selectItem itemLabel="Cartão" itemValue="cartao" />
+										<p:ajax event="click" update="@form"></p:ajax>
+									</p:selectOneRadio>
+									<p:graphicImage style="width:15%;"
+										rendered="#{finalizarCompraController.tipoPagamento == 'pix'}"
+										url="https://i.imgur.com/SeQZqFm.png"></p:graphicImage>
+									<h:form
+										rendered="#{finalizarCompraController.tipoPagamento == 'cartao'}">
+										<h:panelGrid columns="2">
+											<p:outputLabel value="Cartão" style="color:white;"></p:outputLabel>
+											<p:inputMask mask="9999 9999 9999 9999"
+												alue="#{finalizarCompraController.cartao.cartao}"
+												required="true"></p:inputMask>
+											<p:outputLabel value="Titular" style="color:white;"></p:outputLabel>
+											<p:inputText
+												value="#{finalizarCompraController.cartao.nomeTitular}"
+												required="true"></p:inputText>
+											<p:outputLabel value="Data Vencimento" style="color:white;"></p:outputLabel>
+											<p:inputMask mask="99/99"
+												value="#{finalizarCompraController.cartao.dataVencimento}"
+												required="true"></p:inputMask>
+											<p:outputLabel value="CVV" style="color:white;"></p:outputLabel>
+											<p:inputText value="#{finalizarCompraController.cartao.cvv}"
+												required="true"></p:inputText>
+										</h:panelGrid>
+									</h:form>
+									<br />
+									<p:commandButton style="background-color:green;border:green;"
+										value="Finalizar Compra" update="growl"
+										actionListener="#{finalizarCompraController.comprar}"></p:commandButton>
 								</div>
-								<p:commandButton style="background-color:green;border:green;" value="Finalizar Compra" update="growl" actionListener="#{finalizarCompraController.comprar}"></p:commandButton>
 							</div>
 						</div>
 					</div>
-				</div>
-			</center>
+				</center>
 			</h:form>
 
 		</ui:define>

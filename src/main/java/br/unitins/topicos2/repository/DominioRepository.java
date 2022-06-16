@@ -15,7 +15,7 @@ public class DominioRepository extends Repository<Dominio> {
 	@SuppressWarnings("unchecked")
 	public List<Dominio> findByNome(String nome, Integer maxResults) throws RepositoryException {
 		try {
-			String sql = "SELECT e FROM Dominio e WHERE lower(e.dominio) LIKE lower(:nome)";
+			String sql = "SELECT e FROM Dominio e WHERE lower(e.dominio) LIKE lower(:nome) AND e.ativo = true";
 			Query query = getEntityManager().createQuery(sql);
 			query.setParameter("nome", "%" + nome + "%");
 			if (maxResults != null)

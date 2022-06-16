@@ -88,6 +88,11 @@
 		<pattern value="/finalizarCompra" />
 		<view-id value="/views/finalizarCompra.xhtml" />
 	</url-mapping>
+	
+	<url-mapping id="formasPagamento">
+		<pattern value="/formasPagamento" />
+		<view-id value="/views/formasPagamento.xhtml" />
+	</url-mapping>
 
 
 </pretty-config>

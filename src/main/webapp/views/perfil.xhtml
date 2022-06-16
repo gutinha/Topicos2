@@ -66,7 +66,7 @@
 								actionListener="#{perfilController.abrirTrocaSenhaListing}" />
 							<p:commandButton value="Salvar" styleClass="ui-button-outlined"
 								style="margin-left:10px;margin-right:10px;"
-								actionListener="#{perfilController.alterar}" update="@form"
+								onclick="PF('dlg4').show()" update="@form"
 								process="@form" />
 						</center>
 					</center>
@@ -86,6 +86,16 @@
 						dragDropSupport="false">
 					</p:fileUpload>
 					<p:growl id="messages" showDetail="false" />
+				</h:form>
+			</p:dialog>
+			
+			<p:dialog header="Salvar" widgetVar="dlg4" minHeight="50"
+				width="600" showEffect="fade" modal="true" draggable="false">
+				<h:form>
+					<p:outputLabel value="Digite sua senha"></p:outputLabel>
+					<p:password value="#{perfilController.senha}"></p:password>
+					<p:commandButton value="Salvar" actionListener="#{perfilController.salvar}" update="messages" oncomplete="PF('dlg4').hide()"></p:commandButton>
+					<p:growl id="messages" showDetail="true" />
 				</h:form>
 			</p:dialog>
 

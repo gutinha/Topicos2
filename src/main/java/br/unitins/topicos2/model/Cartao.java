@@ -1,5 +1,8 @@
 package br.unitins.topicos2.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Cartao extends MeioPagamento{
 	private static final long serialVersionUID = -699919787234085058L;
 	private String cartao;

@@ -22,6 +22,7 @@ import br.unitins.topicos2.utils.Util;
 public class PerfilController extends Controller<Usuario> implements Serializable {
 	private static final long serialVersionUID = 3965694209038185792L;
 	private InputStream fotoInputStream = null;
+	private String senha;
 
 	public PerfilController() {
 		super(new UsuarioRepository());
@@ -86,6 +87,18 @@ public class PerfilController extends Controller<Usuario> implements Serializabl
 		listing.open();
 	}
 	
+	public void salvar() {
+			setSenha(Util.hash(getEntity(), getSenha()));
+			if(!getSenha().equals(getEntity().getSenha())) {
+				Util.addErrorMessage("Erro!", "Senha incorreta");
+			}
+			else if(getEntity().getSenha().equals(getSenha())) {
+				alterar();
+				Session.getInstance().set("usuarioLogado", getEntity());
+			}
+			
+	}
+	
 	//retorna a instancia de pessoa fisica ou juridica - usado pra renderizar os campos
 	public boolean getInstanceOfPf() {
 		if (getEntity() instanceof PessoaFisica) {
@@ -96,6 +109,14 @@ public class PerfilController extends Controller<Usuario> implements Serializabl
 			return true;
 		}
 		
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 }
