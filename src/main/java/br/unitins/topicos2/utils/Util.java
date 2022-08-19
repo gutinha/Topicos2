@@ -20,7 +20,7 @@ public class Util {
 	
 	public static void redirect(String page) {
 		try {
-			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();;
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 			ec.redirect(ec.getRequestContextPath() + page);
 		} catch (IOException e) {
 			System.out.println("Não foi possível realizar o redirecionamento.");
@@ -55,7 +55,7 @@ public class Util {
 		addMessage(titulo,FacesMessage.SEVERITY_INFO,content);
 	}
 	
-	private static DecimalFormat formatter = new DecimalFormat("###,###,##0.00");
+	private static final DecimalFormat formatter = new DecimalFormat("###,###,##0.00");
 	public static String formatPrice(Double price) {
 		 return formatter.format(price);
 	}

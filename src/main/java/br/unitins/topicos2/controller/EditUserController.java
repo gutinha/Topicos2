@@ -20,16 +20,11 @@ public class EditUserController extends Controller<Usuario> implements Serializa
 	public EditUserController() {
 		super(new UsuarioRepository());
 	}
-	
+	//retorna o tipo de usuário logado na sessão
 	public boolean getInstanceOfPf() {
 		if (getEntity() instanceof PessoaFisica) {
 			return true;
-		} else if (getEntity() instanceof PessoaJuridica) {
-			return false;
-		} else {
-			return true;
-		}
-		
+		} else return !(getEntity() instanceof PessoaJuridica);
 	}
 	
 	@Override

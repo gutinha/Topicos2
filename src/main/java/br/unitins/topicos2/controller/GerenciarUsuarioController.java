@@ -30,7 +30,6 @@ public class GerenciarUsuarioController extends Controller<Usuario> implements S
 	UsuarioRepository repo = new UsuarioRepository();
 	public GerenciarUsuarioController() {
 		super(new UsuarioRepository());
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -72,7 +71,6 @@ public class GerenciarUsuarioController extends Controller<Usuario> implements S
 			Session.getInstance().set("editUser", repo.findById(id));
 			Util.redirect("/admin/editUser");
 		} catch (RepositoryException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -83,7 +81,6 @@ public class GerenciarUsuarioController extends Controller<Usuario> implements S
 				setEntity(repo.findById(id));
 				getEntity().setExcluido(true);
 			} catch (RepositoryException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		

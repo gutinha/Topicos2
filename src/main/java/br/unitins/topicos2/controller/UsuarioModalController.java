@@ -28,12 +28,7 @@ public class UsuarioModalController extends Controller<Usuario> implements Seria
 		public boolean getInstanceOfPf() {
 			if (getEntity() instanceof PessoaFisica) {
 				return true;
-			} else if (getEntity() instanceof PessoaJuridica) {
-				return false;
-			} else {
-				return true;
-			}
-			
+			} else return !(getEntity() instanceof PessoaJuridica);
 		}
 
 }

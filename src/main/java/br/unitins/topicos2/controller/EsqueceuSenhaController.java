@@ -29,14 +29,14 @@ public class EsqueceuSenhaController implements Serializable {
 	String codigo = "";
 
 	public void enviarEmail() {
-		if (findUsuario() == false) {
+		if (!findUsuario()) {
 			Util.addErrorMessage("Erro!", "E-mail não encontrado em nosso banco de dados.");
 			return;
 		}
 
 		generateCodigo();
 
-		if (generateEsqueceuSenha() == false) {
+		if (!generateEsqueceuSenha()) {
 			Util.addErrorMessage("Erro!", "Não foi possível gerar a chave, tente novamente mais tarde.");
 			return;
 		}
@@ -44,10 +44,10 @@ public class EsqueceuSenhaController implements Serializable {
 		Email email = new Email(usuario.getEmail(), "Redefinir senha", codigo);
 		if (!email.enviar()) {
 			Util.addErrorMessage("Erro!", "Problema ao enviar o email.");
-			return;
-		} else
+		} else {
 			Util.addInfoMessage("Sucesso!", "Código enviado para seu email.");
 			Util.redirect("/redefinirSenha");
+		}
 	}
 
 	public boolean generateEsqueceuSenha() {
@@ -60,12 +60,7 @@ public class EsqueceuSenhaController implements Serializable {
 		EsqueceuSenhaRepository repoEsqueceu = new EsqueceuSenhaRepository();
 		try {
 			repoEsqueceu.save(esqueceu);
-		} catch (RepositoryException e) {
-			// Util.addErrorMessage("Erro!", "Problema ao gerar o código, tente
-			// novamente.");
-			e.printStackTrace();
-			return false;
-		} catch (VersionException e) {
+		} catch (RepositoryException | VersionException e) {
 			// Util.addErrorMessage("Erro!", "Problema ao gerar o código, tente
 			// novamente.");
 			e.printStackTrace();

@@ -46,9 +46,5 @@ public class LoginController extends Controller<Usuario> implements Serializable
 			e.printStackTrace();
 		}
 	}
-	
-	public void abrirCadastro() {
-		
-	}
 
 }

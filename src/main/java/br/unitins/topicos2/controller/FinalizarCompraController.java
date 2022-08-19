@@ -31,7 +31,6 @@ public class FinalizarCompraController extends Controller<Venda> implements Seri
 
 	public FinalizarCompraController() {
 		super(new VendaRepository());
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -59,9 +58,7 @@ public class FinalizarCompraController extends Controller<Venda> implements Seri
 			pix.setChavePix("03829558112");
 			try {
 				pix = pRepo.save(pix);
-			} catch (RepositoryException e1) {
-				e1.printStackTrace();
-			} catch (VersionException e1) {
+			} catch (RepositoryException | VersionException e1) {
 				e1.printStackTrace();
 			}
 			PagamentoRepository paRepo = new PagamentoRepository();
@@ -70,9 +67,7 @@ public class FinalizarCompraController extends Controller<Venda> implements Seri
 			paga.setMeioPagamento(pix);
 			try {
 				paga = paRepo.save(paga);
-			} catch (RepositoryException e) {
-				e.printStackTrace();
-			} catch (VersionException e) {
+			} catch (RepositoryException | VersionException e) {
 				e.printStackTrace();
 			}
 			getEntity().setPagamento(paga);
@@ -88,20 +83,12 @@ public class FinalizarCompraController extends Controller<Venda> implements Seri
 					paga.setMeioPagamento(a);
 					paga = paRepo.save(paga);
 					getEntity().setPagamento(paga);
-				} catch (RepositoryException e) {
-					e.printStackTrace();
-				} catch (VersionException e) {
+				} catch (RepositoryException | VersionException e) {
 					e.printStackTrace();
 				}
-			} catch (RepositoryException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (VersionException e) {
-				// TODO Auto-generated catch block
+			} catch (RepositoryException | VersionException e) {
 				e.printStackTrace();
 			}
-			
-
 		}
 		getEntity().setUsuario((Usuario) Session.getInstance().get("usuarioLogado"));
 		incluir();
@@ -129,11 +116,7 @@ public class FinalizarCompraController extends Controller<Venda> implements Seri
 	public boolean getInstanceOfProduto() {
 		if (getEntity().getItemVenda().getProduto() instanceof Dominio) {
 			return true;
-		} else if (getEntity().getItemVenda().getProduto() instanceof ServidorVM) {
-			return false;
-		} else {
-			return true;
-		}
+		} else return !(getEntity().getItemVenda().getProduto() instanceof ServidorVM);
 	}
 
 	public String getTipoPagamento() {

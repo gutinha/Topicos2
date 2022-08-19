@@ -51,29 +51,6 @@ public class RegistroDominioController extends Controller<Dominio> implements Se
 	    	getEntity().setAtivo(true);
 	    	getItemVenda().setPreco(getEntity().getPreco());
 	    	getItemVenda().setProduto(getEntity());
-	    	/*DominioRepository Drepo = new DominioRepository();
-	    	try {
-				Dominio aux = Drepo.save(getEntity());
-				setEntity(aux);
-				getItemVenda().setProduto(getEntity());
-			} catch (RepositoryException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (VersionException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-	    	ItemVendaRepository repo = new ItemVendaRepository();
-	    	try {
-				ItemVenda aux= repo.save(getItemVenda());
-				setItemVenda(aux);
-			} catch (RepositoryException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (VersionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} */
 	    	valido = false;
 	        return false;
 	    } catch (Exception e) {

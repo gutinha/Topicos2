@@ -57,7 +57,7 @@ public class RedefinirSenhaController extends Controller<Usuario> implements Ser
 
 	public void redefinirSenha() {
 		try {
-			if (isRetorno() == false) {
+			if (!isRetorno()) {
 				return;
 			}
 			setEntity(repoE.findUserByCodigo(getCodigo()));

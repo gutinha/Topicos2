@@ -21,10 +21,9 @@ public class CidadeConverter implements Converter<Object>{
 		if (value != null) {
 			Cidade c = (Cidade) value;
 			addAtributo(component, c);
-			String chave = String.valueOf(c.getId());
-			return chave;
+			return String.valueOf(c.getId());
 		}
-		return (String) value;
+		return null;
 	}
 	
 	protected Map<String, Object> getMapaObjetos(UIComponent component){

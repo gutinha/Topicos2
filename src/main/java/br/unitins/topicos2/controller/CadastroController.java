@@ -20,13 +20,6 @@ public class CadastroController extends Controller<PessoaFisica> implements Seri
 	private static final long serialVersionUID = 1654611211341132483L;
 	private boolean skip;
 
-	public boolean isSkip() {
-		return skip;
-	}
-
-	public void setSkip(boolean skip) {
-		this.skip = skip;
-	}
 
 	public CadastroController() {
 		super(new PessoaFisicaRepository());
@@ -52,8 +45,8 @@ public class CadastroController extends Controller<PessoaFisica> implements Seri
 	
 	public String onFlowProcess(FlowEvent event) {
         if (skip) {
-            skip = false; //reset in case user goes back
-            return "confirm";
+			skip = false;//reset in case user goes back
+			return "confirm";
         }
         else {
             return event.getNewStep();

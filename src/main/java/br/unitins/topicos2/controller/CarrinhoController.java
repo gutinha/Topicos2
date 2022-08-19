@@ -47,11 +47,7 @@ public class CarrinhoController extends Controller<Venda> implements Serializabl
 		public boolean getInstanceOfProduto() {
 			if (getEntity().getItemVenda().getProduto() instanceof Dominio) {
 				return true;
-			} else if (getEntity().getItemVenda().getProduto() instanceof ServidorVM) {
-				return false;
-			} else {
-				return true;
-			}
+			} else return !(getEntity().getItemVenda().getProduto() instanceof ServidorVM);
 			
 		}
 

@@ -39,7 +39,6 @@ public class PerfilController extends Controller<Usuario> implements Serializabl
 				fotoInputStream = uploadFile.getInputStream();
 				System.out.println("inputStream: " + uploadFile.getInputStream().toString());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Util.addInfoMessage("Sucesso!", "Upload realizado com sucesso.");
@@ -103,12 +102,7 @@ public class PerfilController extends Controller<Usuario> implements Serializabl
 	public boolean getInstanceOfPf() {
 		if (getEntity() instanceof PessoaFisica) {
 			return true;
-		} else if (getEntity() instanceof PessoaJuridica) {
-			return false;
-		} else {
-			return true;
-		}
-		
+		} else return !(getEntity() instanceof PessoaJuridica);
 	}
 
 	public String getSenha() {

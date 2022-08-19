@@ -50,7 +50,9 @@ public class Repository<T extends DefaultEntity> {
 
 	}
 
-	public void save(@SuppressWarnings("unchecked") T... entitys) throws RepositoryException {
+
+	@SafeVarargs
+	public final void save(T... entitys) throws RepositoryException {
 		try {
 			getEntityManager().getTransaction().begin();
 			for (T entity : entitys) {
@@ -94,9 +96,7 @@ public class Repository<T extends DefaultEntity> {
 			@SuppressWarnings("unchecked")
 			Class<T> tClass = (Class<T>) (type).getActualTypeArguments()[0];
 
-			T t = (T) getEntityManager().find(tClass, id);
-
-			return t;
+			return getEntityManager().find(tClass, id);
 		} catch (Exception e) {
 			System.out.println("Erro ao executar o método de find.");
 			e.printStackTrace();
@@ -112,9 +112,8 @@ public class Repository<T extends DefaultEntity> {
 			Class<T> tClass = (Class<T>) (type).getActualTypeArguments()[0];
 
 			Query query = getEntityManager().createQuery("Select o FROM " + tClass.getSimpleName() + " o");
-			List<T> lista = query.getResultList();
 
-			return lista;
+			return (List<T>) query.getResultList();
 		} catch (Exception e) {
 			System.out.println("Erro ao executar o método de findAll.");
 			e.printStackTrace();

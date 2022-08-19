@@ -15,8 +15,8 @@ public abstract class ListingSQL<T extends DefaultEntity> implements Serializabl
 
 	private static final long serialVersionUID = 442507269200062526L;
 
-	private String page;
-	private Repository<T> repository;
+	private final String page;
+	private final Repository<T> repository;
 	private List<Object[]> list;
 
 	public ListingSQL(String page, Repository<T> repository) {

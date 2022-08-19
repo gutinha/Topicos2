@@ -7,7 +7,7 @@ import br.unitins.topicos2.utils.Util;
 import br.unitins.topicos2.utils.VersionException;
 
 public abstract class Controller <T extends DefaultEntity> {
-	private Repository<T> repository;
+	private final Repository<T> repository;
 	protected T entity;
 	
 	public Controller(Repository<T> repository) {
@@ -21,10 +21,7 @@ public abstract class Controller <T extends DefaultEntity> {
 			setEntity(getRepository().save(getEntity()));
 			Util.addInfoMessage("Sucesso!", "Inclusão realizada com sucesso.");
 			limpar();
-		} catch (RepositoryException e) {
-			e.printStackTrace();
-			Util.addErrorMessage("Erro!", e.getMessage());
-		} catch (VersionException e) {
+		} catch (RepositoryException | VersionException e) {
 			e.printStackTrace();
 			Util.addErrorMessage("Erro!", e.getMessage());
 		}
@@ -35,10 +32,7 @@ public abstract class Controller <T extends DefaultEntity> {
 			limparRelacionamentosNaoObrigatorios();
 			setEntity(getRepository().save(getEntity()));
 			Util.addInfoMessage("Sucesso!", "Salvo com sucesso.");
-		} catch (RepositoryException e) {
-			e.printStackTrace();
-			Util.addErrorMessage("Erro!", e.getMessage());
-		} catch (VersionException e) {
+		} catch (RepositoryException | VersionException e) {
 			e.printStackTrace();
 			Util.addErrorMessage("Erro!", e.getMessage());
 		}
@@ -50,10 +44,7 @@ public abstract class Controller <T extends DefaultEntity> {
 			setEntity(getRepository().save(getEntity()));
 			Util.addInfoMessage("Sucesso", "Alteração realizada com sucesso.");
 			limpar();
-		} catch (RepositoryException e) {
-			e.printStackTrace();
-			Util.addErrorMessage("Erro!", e.getMessage());
-		} catch (VersionException e) {
+		} catch (RepositoryException | VersionException e) {
 			e.printStackTrace();
 			Util.addErrorMessage("Erro!", e.getMessage());
 		}
@@ -68,13 +59,10 @@ public abstract class Controller <T extends DefaultEntity> {
 			setEntity(getRepository().save(getEntity()));
 			Util.addInfoMessage("Sucesso", "Exclusão realizada com sucesso.");
 			limpar();
-		} catch (RepositoryException e) {
+		} catch (RepositoryException | VersionException e) {
 			e.printStackTrace();
 			Util.addErrorMessage("Erro!", e.getMessage());
-		} catch (VersionException e) {
-			e.printStackTrace();
-			Util.addErrorMessage("Erro!", e.getMessage());
-		} 
+		}
 	}
 
 	

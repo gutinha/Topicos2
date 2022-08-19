@@ -23,10 +23,9 @@ public class PaisConverter implements Converter<Object>{
 		if (value != null) {
 			Pais p = (Pais) value;
 			addAtributo(component, p);
-			String chave = String.valueOf(p.getId());
-			return chave;
+			return String.valueOf(p.getId());
 		}
-		return (String) value;
+		return null;
 	}
 	
 	protected Map<String, Object> getMapaObjetos(UIComponent component){
